@@ -1,0 +1,89 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contacts": "Contacts",
+    "cv": "Download CV"
+  },
+  "hero": {
+    "greeting": "Hi, I am",
+    "name": "Dhimas!",
+    "prefix": "Informatics Student passionate about",
+    "phrases": [
+      "building interactive web apps",
+      "tinkering with homelab servers",
+      "writing native desktop software",
+      "exploring cybersecurity & SOC",
+      "architecting smart automations"
+    ],
+    "ctaProjects": "Explore Projects",
+    "ctaCv": "Download CV",
+    "scrollHint": "Scroll down",
+    "flipHint": "Tap to flip card"
+  },
+  "about": {
+    "title": "About Dhimas",
+    "lead": "",
+    "p1": "Hi, I'm Dhimas, a developer who loves tinkering and discovering workarounds for tricky problems. My interests lie in network engineering and cybersecurity, and I frequently experiment with AI provider routing and self-hosting servers. To me, every problem is fascinating—especially when it calls for unconventional thinking to solve.",
+    "p2": "I also love creating and using quality-of-life software: tools that streamline daily workflows and make computing genuinely practical. If you've got an unusual technical problem without an obvious solution, let's explore it together.",
+    "stats": {
+      "gpa": "3.74",
+      "gpaLabel": "Informatics GPA (out of 4.00)",
+      "projects": "6+",
+      "projectsLabel": "Key Projects",
+      "cert": "6+",
+      "certLabel": "Industry Certifications"
+    }
+  },
+  "experience": {
+    "title": "Experience & Journey",
+    "subtitle": "Professional internships, creative involvement, and academic computer science milestones.",
+    "tabAll": "All",
+    "tabWork": "Work & Internships",
+    "tabEducation": "Education"
+  },
+  "projects": {
+    "title": "Selected Projects",
+    "subtitle": "Real-world engineering work spanning campus management platforms, native desktop tooling, and system automations.",
+    "filterAll": "All",
+    "filterWeb": "Web",
+    "filterDesktop": "Desktop",
+    "filterSystem": "Systems & Automation",
+    "filterLocalization": "Localization",
+    "viewRepo": "Repository",
+    "viewLive": "Live Demo",
+    "details": "View Details",
+    "featured": "Featured",
+    "modalRole": "Role",
+    "modalStack": "Tech Stack",
+    "modalOutcome": "Outcome",
+    "close": "Close"
+  },
+  "skills": {
+    "title": "Technical Toolkit",
+    "subtitle": "Languages, frameworks, and system environments used in production and research code.",
+    "certificationsTitle": "Verified Certifications & Training"
+  },
+  "contacts": {
+    "title": "Let's connect.",
+    "subtitle": "Open to internship opportunities, research collaborations, and software engineering inquiries.",
+    "emailLabel": "Direct Email",
+    "copyEmail": "Copy",
+    "copied": "Copied!",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "Your Email Address",
+    "messagePlaceholder": "Tell me about your project or inquiry...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "sentSuccess": "Message sent. Thank you for reaching out!",
+    "location": "Semarang / Rembang, Central Java, Indonesia",
+    "status": "Available for Internships & Projects"
+  },
+  "footer": {
+    "builtWith": "Engineered with Next.js, Tailwind CSS, and React Three Fiber.",
+    "designedBy": "Dhimas Reza Nafi Wahyudi",
+    "copyright": "Copyright © 2026. All rights reserved."
+  }
+}

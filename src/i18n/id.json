@@ -1,0 +1,89 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contacts": "Contacts",
+    "cv": "Unduh CV"
+  },
+  "hero": {
+    "greeting": "Hai aku",
+    "name": "Dhimas!",
+    "prefix": "Informatics Student yang suka",
+    "phrases": [
+      "membangun web interaktif",
+      "merakit server homelab",
+      "menulis sistem native",
+      "mengulik cybersecurity",
+      "merancang otomasi cerdas"
+    ],
+    "ctaProjects": "Lihat Projects",
+    "ctaCv": "Unduh CV",
+    "scrollHint": "Gulir ke bawah",
+    "flipHint": "Ketuk untuk balik kartu"
+  },
+  "about": {
+    "title": "Tentang Dhimas",
+    "lead": "",
+    "p1": "Hai, aku Dhimas, seorang developer yang suka ngotak-atik dan mencari workaround dari berbagai masalah. Minatku ada di network engineering dan cybersecurity, dan aku sering bereksperimen dengan AI provider routing serta hosting server sendiri. Buatku, setiap masalah itu menarik, apalagi kalau butuh cara di luar kebiasaan untuk menyelesaikannya.",
+    "p2": "Aku juga suka membuat dan memakai program yang berorientasi pada quality of life, yaitu tools yang bikin pekerjaan lebih ringan dan hidup lebih praktis. Kalau ada masalah aneh yang belum ketemu solusinya, mungkin kita bisa ngotak-atik bareng.",
+    "stats": {
+      "gpa": "3,74",
+      "gpaLabel": "IPK Informatika Undip",
+      "projects": "6+",
+      "projectsLabel": "Proyek Unggulan",
+      "cert": "6+",
+      "certLabel": "Sertifikasi Resmi"
+    }
+  },
+  "experience": {
+    "title": "Perjalanan & Pengalaman",
+    "subtitle": "Kilas rekam jejak profesional, keterlibatan organisasi, dan fondasi akademik.",
+    "tabAll": "Semua",
+    "tabWork": "Kerja & Magang",
+    "tabEducation": "Pendidikan"
+  },
+  "projects": {
+    "title": "Proyek Terpilih",
+    "subtitle": "Eksplorasi karya nyata mulai dari platform web kampus, aplikasi desktop native, otomasi, hingga modifikasi sistem.",
+    "filterAll": "Semua",
+    "filterWeb": "Web",
+    "filterDesktop": "Desktop",
+    "filterSystem": "Sistem & Otomasi",
+    "filterLocalization": "Lokalisasi",
+    "viewRepo": "Repositori",
+    "viewLive": "Demo Langsung",
+    "details": "Detail Lengkap",
+    "featured": "Unggulan",
+    "modalRole": "Peran",
+    "modalStack": "Teknologi",
+    "modalOutcome": "Dampak / Hasil",
+    "close": "Tutup"
+  },
+  "skills": {
+    "title": "Kemampuan Teknis",
+    "subtitle": "Perangkat, bahasa, dan ekosistem yang digunakan dalam pengembangan perangkat lunak nyata.",
+    "certificationsTitle": "Sertifikasi & Pelatihan Terverifikasi"
+  },
+  "contacts": {
+    "title": "Yuk ngobrol.",
+    "subtitle": "Terbuka untuk kesempatan magang, kolaborasi riset, dan proyek perangkat lunak.",
+    "emailLabel": "Email Langsung",
+    "copyEmail": "Salin",
+    "copied": "Tersalin!",
+    "namePlaceholder": "Nama Anda",
+    "emailPlaceholder": "Alamat email Anda",
+    "messagePlaceholder": "Tulis pesan atau topik diskusi...",
+    "send": "Kirim Pesan",
+    "sending": "Mengirim...",
+    "sentSuccess": "Pesan terkirim. Terima kasih sudah menyapa!",
+    "location": "Semarang / Rembang, Jawa Tengah",
+    "status": "Tersedia untuk Magang & Proyek"
+  },
+  "footer": {
+    "builtWith": "Dibuat dengan Next.js, Tailwind CSS, dan React Three Fiber.",
+    "designedBy": "Dhimas Reza Nafi Wahyudi",
+    "copyright": "Hak Cipta © 2026. Semua hak dilindungi."
+  }
+}

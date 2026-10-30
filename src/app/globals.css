@@ -1,26 +1,207 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f4f4f7;
+  --ink: #0d0f12;
+  --ink-muted: #525866;
+  --line: #b9bbc6;
+  --accent: #d94600;
+  --accent-strong: #b83800;
+  --accent-soft: #fff2eb;
+  --glow: rgba(217, 70, 0, 0.20);
+
+  --font-display: var(--font-bricolage, sans-serif);
+  --font-body: var(--font-instrument, sans-serif);
+  --font-mono: var(--font-jetbrains, monospace);
+  --font-pixel: var(--font-silkscreen, monospace);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --bg: #15191e;
+  --surface: #1c2128;
+  --surface-2: #242a33;
+  --ink: #f0f3f6;
+  --ink-muted: #9ba3af;
+  --line: #353c48;
+  --accent: #ff6f26;
+  --accent-strong: #ff8647;
+  --accent-soft: #3d2316;
+  --glow: rgba(255, 111, 38, 0.25);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.font-pixel {
+  font-family: var(--font-pixel);
+}
+
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #ffffff;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Circular View Transition for Theme Toggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* Typography utilities */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Glass panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+}
+
+.dark .glass-panel {
+  background: rgba(28, 33, 40, 0.85);
+  border: 1px solid var(--line);
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+/* Ripple Grid Cells */
+.ripple-cell {
+  background-color: var(--bg);
+  border: 1px solid rgba(185, 187, 198, 0.28);
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.dark .ripple-cell {
+  border: 1px solid rgba(60, 68, 80, 0.32);
+}
+
+.ripple-cell.pulse {
+  animation: ripple-pulse 320ms forwards;
+}
+
+@keyframes ripple-pulse {
+  0% {
+    background-color: var(--bg);
+    transform: scale(1);
+  }
+  50% {
+    background-color: var(--accent);
+    transform: scale(1.08);
+  }
+  100% {
+    background-color: var(--bg);
+    transform: scale(1);
+  }
+}
+
+.ripple-cell.ambient-glow {
+  animation: tile-ambient-glow 520ms forwards;
+}
+
+@keyframes tile-ambient-glow {
+  0% {
+    background-color: var(--bg);
+    transform: scale(1);
+  }
+  50% {
+    background-color: var(--accent);
+    transform: scale(1.05);
+  }
+  100% {
+    background-color: var(--bg);
+    transform: scale(1);
+  }
+}
+
+/* Marquee infinite loop animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 25s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

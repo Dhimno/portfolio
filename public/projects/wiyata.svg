@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="wiyataBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1D3D"/>
+      <stop offset="100%" stop-color="#142B5C"/>
+    </linearGradient>
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E5B94C"/>
+      <stop offset="100%" stop-color="#F7D377"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#wiyataBg)"/>
+  
+  <!-- Subtle architectural grid lines -->
+  <g stroke="rgba(255,255,255,0.06)" stroke-width="1">
+    <line x1="80" y1="0" x2="80" y2="500"/>
+    <line x1="240" y1="0" x2="240" y2="500"/>
+    <line x1="400" y1="0" x2="400" y2="500"/>
+    <line x1="560" y1="0" x2="560" y2="500"/>
+    <line x1="720" y1="0" x2="720" y2="500"/>
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="250" x2="800" y2="250"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+  </g>
+
+  <!-- Central Card Representation -->
+  <g transform="translate(120, 90)">
+    <rect width="560" height="320" rx="16" fill="#182A52" stroke="#2B4680" stroke-width="1.5"/>
+    
+    <!-- Top bar -->
+    <rect x="24" y="24" width="180" height="28" rx="6" fill="#203666"/>
+    <circle cx="40" cy="38" r="5" fill="#E5B94C"/>
+    <text x="54" y="43" fill="#E2E8F0" font-family="sans-serif" font-size="12" font-weight="600">WIYATA • UNDIP</text>
+    
+    <rect x="420" y="24" width="116" height="28" rx="6" fill="#10B981" fill-opacity="0.18" stroke="#10B981" stroke-width="1"/>
+    <text x="440" y="42" fill="#34D399" font-family="sans-serif" font-size="11" font-weight="600">Active Booking</text>
+    
+    <!-- Calendar slot mockups -->
+    <g transform="translate(24, 76)">
+      <rect width="160" height="100" rx="10" fill="#22396B"/>
+      <text x="16" y="32" fill="#94A3B8" font-family="sans-serif" font-size="11">Gedung Serbaguna</text>
+      <text x="16" y="58" fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold">Aula Prof. Soedarto</text>
+      <rect x="16" y="72" width="60" height="16" rx="4" fill="url(#goldAccent)"/>
+      <text x="24" y="84" fill="#0E1D3D" font-family="sans-serif" font-size="9" font-weight="bold">Verified</text>
+    </g>
+    
+    <g transform="translate(196, 76)">
+      <rect width="160" height="100" rx="10" fill="#22396B"/>
+      <text x="16" y="32" fill="#94A3B8" font-family="sans-serif" font-size="11">Laboratorium FSM</text>
+      <text x="16" y="58" fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold">Lab Komputasi E101</text>
+      <rect x="16" y="72" width="70" height="16" rx="4" fill="#3B82F6"/>
+      <text x="24" y="84" fill="#FFFFFF" font-family="sans-serif" font-size="9" font-weight="bold">08:00 - 12:00</text>
+    </g>
+    
+    <g transform="translate(368, 76)">
+      <rect width="168" height="100" rx="10" fill="#22396B"/>
+      <text x="16" y="32" fill="#94A3B8" font-family="sans-serif" font-size="11">Ruang Seminar</text>
+      <text x="16" y="58" fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold">Acintya Prasada</text>
+      <rect x="16" y="72" width="64" height="16" rx="4" fill="#6366F1"/>
+      <text x="24" y="84" fill="#FFFFFF" font-family="sans-serif" font-size="9" font-weight="bold">Available</text>
+    </g>
+    
+    <!-- Bottom multi-role indicator -->
+    <line x1="24" y1="200" x2="536" y2="200" stroke="#2B4680" stroke-width="1"/>
+    
+    <g transform="translate(24, 220)">
+      <circle cx="16" cy="16" r="16" fill="#3B82F6" fill-opacity="0.2"/>
+      <path d="M11 16 L15 20 L21 12" stroke="#60A5FA" stroke-width="2" fill="none"/>
+      <text x="40" y="20" fill="#E2E8F0" font-family="sans-serif" font-size="12" font-weight="500">Real-time Conflict Checking &amp; Multi-role Approval</text>
+    </g>
+    <g transform="translate(24, 260)">
+      <text x="4" y="18" fill="#94A3B8" font-family="sans-serif" font-size="11">Laravel 11 • MySQL • Tailwind CSS • Pest Testing Engine</text>
+    </g>
+  </g>
+</svg>

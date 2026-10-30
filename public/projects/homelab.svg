@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="homeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#121820"/>
+      <stop offset="100%" stop-color="#1E2733"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#homeBg)"/>
+
+  <!-- Server Rack / Docker Node illustration -->
+  <g transform="translate(180, 80)">
+    <!-- Server box -->
+    <rect width="440" height="280" rx="14" fill="#18202A" stroke="#2E3C4E" stroke-width="1.5"/>
+    
+    <!-- Top status bar -->
+    <rect x="24" y="24" width="392" height="40" rx="8" fill="#11161D"/>
+    <circle cx="44" cy="44" r="6" fill="#10B981"/>
+    <text x="60" y="48" fill="#E2E8F0" font-family="monospace" font-size="12">armbian-s905x:~$ uptime 24/7</text>
+    <text x="350" y="48" fill="#38BDF8" font-family="monospace" font-size="11">Tailscale</text>
+
+    <!-- Services grid -->
+    <g transform="translate(24, 84)">
+      <rect width="186" height="74" rx="8" fill="#1F2A38" stroke="#33445A" stroke-width="1"/>
+      <text x="14" y="28" fill="#38BDF8" font-family="sans-serif" font-size="13" font-weight="600">AdGuard Home</text>
+      <text x="14" y="52" fill="#94A3B8" font-family="sans-serif" font-size="11">DNS Sinkhole &amp; Filter</text>
+    </g>
+
+    <g transform="translate(230, 84)">
+      <rect width="186" height="74" rx="8" fill="#1F2A38" stroke="#33445A" stroke-width="1"/>
+      <text x="14" y="28" fill="#EC4899" font-family="sans-serif" font-size="13" font-weight="600">n8n Automation</text>
+      <text x="14" y="52" fill="#94A3B8" font-family="sans-serif" font-size="11">Jarvis &amp; Smart Workflows</text>
+    </g>
+
+    <g transform="translate(24, 174)">
+      <rect width="186" height="74" rx="8" fill="#1F2A38" stroke="#33445A" stroke-width="1"/>
+      <text x="14" y="28" fill="#10B981" font-family="sans-serif" font-size="13" font-weight="600">Firefly III</text>
+      <text x="14" y="52" fill="#94A3B8" font-family="sans-serif" font-size="11">Self-hosted Finance</text>
+    </g>
+
+    <g transform="translate(230, 174)">
+      <rect width="186" height="74" rx="8" fill="#1F2A38" stroke="#33445A" stroke-width="1"/>
+      <text x="14" y="28" fill="#F59E0B" font-family="sans-serif" font-size="13" font-weight="600">Samba Storage</text>
+      <text x="14" y="52" fill="#94A3B8" font-family="sans-serif" font-size="11">Private NAS Network</text>
+    </g>
+  </g>
+
+  <text x="400" y="410" text-anchor="middle" fill="#64748B" font-family="sans-serif" font-size="14">Amlogic S905X ARM64 • CasaOS • Docker Containers</text>
+</svg>

@@ -135,7 +135,7 @@ export function SystemsTelemetrySimulator() {
     <div className="flex flex-col justify-between h-full font-mono text-xs select-none space-y-3">
       <div className="flex items-center justify-between border-b border-dashed border-[var(--line)] pb-2 text-[10px]">
         <div className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-none bg-emerald-500 animate-pulse" />
           <span className="text-[var(--accent)] font-semibold uppercase tracking-wider">
             NODE01 // PVE-CLUSTER
           </span>
@@ -194,7 +194,7 @@ export function SystemsTelemetrySimulator() {
               key={srv.name}
               className="inline-flex items-center gap-1 px-1.5 py-0.5 border border-[var(--line)] bg-[var(--surface-2)]/60 text-[var(--ink)]"
             >
-              <span className="w-1 h-1 rounded-full bg-emerald-500 shrink-0" />
+              <span className="w-1 h-1 rounded-none bg-emerald-500 shrink-0" />
               <span className="text-[var(--ink-muted)]">{srv.name}:</span>
               <span className="text-emerald-600 dark:text-emerald-400 font-medium">
                 {srv.status}

@@ -85,7 +85,7 @@ export function TechArsenalView({ pillar }: TechArsenalViewProps) {
       {/* Footer Spec Bar */}
       <div className="pt-2 border-t border-dashed border-[var(--line)] flex items-center justify-between text-[10px] text-[var(--ink-muted)]">
         <div className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 bg-emerald-500 animate-pulse rounded-full" />
+          <span className="w-1.5 h-1.5 bg-emerald-500 animate-pulse rounded-none" />
           <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--ink-muted)]">
             STACK: OPERATIONAL
           </span>

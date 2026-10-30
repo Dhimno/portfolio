@@ -214,7 +214,7 @@ export function ProjectsSection() {
                         {project.stack.slice(0, 4).map((tech) => (
                           <span
                             key={tech}
-                            className="px-2 py-0.5 rounded-md bg-[var(--surface-2)] text-[11px] font-mono text-[var(--ink-muted)] font-medium"
+                            className="px-2 py-0.5 rounded-none border border-[var(--line)]/80 bg-[var(--surface-2)] text-[11px] font-mono text-[var(--ink-muted)] font-medium"
                           >
                             {tech}
                           </span>
@@ -283,7 +283,7 @@ export function ProjectsSection() {
               </div>
 
               {/* Cover Graphic in Modal */}
-              <div className="relative w-full h-56 sm:h-64 rounded-xl overflow-hidden mb-6 bg-[var(--surface-2)]">
+              <div className="relative w-full h-56 sm:h-64 rounded-none border-2 border-[var(--line)] shadow-[3px_3px_0px_var(--line)] overflow-hidden mb-6 bg-[var(--surface-2)]">
                 <Image
                   src={selectedProject.cover}
                   alt={selectedProject.title}
@@ -321,7 +321,7 @@ export function ProjectsSection() {
                   {selectedProject.stack.map((item) => (
                     <span
                       key={item}
-                      className="px-2.5 py-1 rounded-md bg-[var(--surface-2)] text-xs font-mono text-[var(--ink)] font-medium"
+                      className="px-2.5 py-1 rounded-none border border-[var(--line)] shadow-[1px_1px_0px_var(--line)] bg-[var(--surface-2)] text-xs font-mono text-[var(--ink)] font-medium"
                     >
                       {item}
                     </span>
@@ -336,7 +336,7 @@ export function ProjectsSection() {
                     href={selectedProject.links.repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[var(--ink)] text-[var(--surface)] text-xs font-medium hover:opacity-90 transition-opacity"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-none border-2 border-[var(--ink)] shadow-[3px_3px_0px_var(--ink)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_var(--ink)] font-pixel text-xs tracking-wider bg-[var(--ink)] text-[var(--surface)] hover:opacity-90 transition-all"
                   >
                     <GithubIcon className="w-4 h-4" />
                     <span>{t.projects.viewRepo}</span>
@@ -347,7 +347,7 @@ export function ProjectsSection() {
                     href={selectedProject.links.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[var(--accent)] text-white text-xs font-medium hover:bg-[var(--accent-strong)] transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-none border-2 border-[var(--ink)] shadow-[3px_3px_0px_var(--ink)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_var(--ink)] font-pixel text-xs tracking-wider bg-[var(--accent)] text-white hover:bg-[var(--accent-strong)] transition-all"
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span>{t.projects.viewLive}</span>

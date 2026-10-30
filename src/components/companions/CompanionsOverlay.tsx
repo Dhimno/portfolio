@@ -348,14 +348,14 @@ export function CompanionsOverlay() {
       </div>
 
       {/* Retro Mini Floating Toggle Control (Bottom right) */}
-      <div className="fixed bottom-4 right-4 z-50 flex items-center gap-1.5 p-1 rounded-xl bg-[var(--surface)]/90 backdrop-blur-md border border-[var(--line)] shadow-lg select-none">
+      <div className="fixed bottom-4 right-4 z-50 flex items-center gap-1.5 p-1 rounded-none bg-[var(--surface)] border-2 border-[var(--line)] shadow-[3px_3px_0px_var(--line)] select-none">
         <button
           type="button"
           onClick={() => setIsVisible(!isVisible)}
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-pixel transition-colors cursor-pointer ${
+          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-none text-xs font-pixel transition-colors cursor-pointer border ${
             isVisible
-              ? "text-[var(--accent)] font-bold bg-[var(--accent-soft)]"
-              : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
+              ? "text-[var(--accent)] font-bold bg-[var(--surface-2)] border-[var(--line)] shadow-[1px_1px_0px_var(--accent)]"
+              : "text-[var(--ink-muted)] hover:text-[var(--ink)] border-transparent"
           }`}
           title={isVisible ? "Sembunyikan Pixel Buddies" : "Tampilkan Pixel Buddies"}
           aria-label="Toggle Pixel Companions"
@@ -369,7 +369,7 @@ export function CompanionsOverlay() {
             <button
               type="button"
               onClick={triggerRandomDialogue}
-              className="p-1.5 rounded-lg text-[var(--ink-muted)] hover:text-[var(--accent)] hover:bg-[var(--surface-2)] transition-colors cursor-pointer"
+              className="p-1.5 rounded-none text-[var(--ink-muted)] hover:text-[var(--accent)] hover:bg-[var(--surface-2)] border border-transparent hover:border-[var(--line)] transition-colors cursor-pointer"
               title="Ajak Bicara"
               aria-label="Ajak Bicara"
             >
@@ -379,7 +379,7 @@ export function CompanionsOverlay() {
             <button
               type="button"
               onClick={handleResetPositions}
-              className="p-1.5 rounded-lg text-[var(--ink-muted)] hover:text-[var(--accent)] hover:bg-[var(--surface-2)] transition-colors cursor-pointer"
+              className="p-1.5 rounded-none text-[var(--ink-muted)] hover:text-[var(--accent)] hover:bg-[var(--surface-2)] border border-transparent hover:border-[var(--line)] transition-colors cursor-pointer"
               title="Reset Posisi Karakter"
               aria-label="Reset Posisi Karakter"
             >

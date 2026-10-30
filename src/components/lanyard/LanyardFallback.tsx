@@ -24,7 +24,7 @@ export function LanyardFallback() {
     <div className="relative w-full h-[520px] sm:h-[600px] flex flex-col items-center justify-start select-none touch-none">
       {/* Top Anchor Point */}
       <div className="absolute top-0 z-20 flex flex-col items-center">
-        <div className="w-4 h-4 rounded-full bg-[var(--line)] border-2 border-[var(--ink-muted)] shadow-sm" />
+        <div className="w-4 h-4 rounded-none bg-[var(--line)] border-2 border-[var(--ink-muted)] shadow-[2px_2px_0px_var(--ink-muted)]" />
       </div>
 
       {/* SVG Braided Ribbon Strap */}
@@ -57,8 +57,8 @@ export function LanyardFallback() {
       </svg>
 
       {/* Metallic Badge Clip */}
-      <div className="w-8 h-4 bg-gradient-to-b from-slate-200 to-slate-400 dark:from-slate-600 dark:to-slate-800 rounded-t-sm shadow-md z-20 border border-slate-300 dark:border-slate-700" />
-      <div className="w-4 h-3 bg-gradient-to-b from-slate-300 to-slate-500 rounded-full shadow-inner -mt-1 z-20" />
+      <div className="w-8 h-4 bg-gradient-to-b from-slate-200 to-slate-400 dark:from-slate-600 dark:to-slate-800 rounded-none shadow-md z-20 border border-slate-300 dark:border-slate-700" />
+      <div className="w-4 h-3 bg-gradient-to-b from-slate-300 to-slate-500 rounded-none border border-slate-600 shadow-inner -mt-1 z-20" />
 
       {/* Draggable & Flippable Badge Card */}
       <motion.div
@@ -88,7 +88,7 @@ export function LanyardFallback() {
         className="relative w-64 sm:w-72 h-[380px] sm:h-[410px] cursor-grab active:cursor-grabbing transform-gpu z-30"
       >
         <div
-          className="w-full h-full rounded-2xl p-5 shadow-2xl transition-all duration-300 border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] flex flex-col justify-between"
+          className="w-full h-full rounded-none p-5 shadow-[6px_6px_0px_var(--line)] transition-all duration-300 border-2 border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] flex flex-col justify-between"
           style={{
             transformStyle: "preserve-3d",
             backfaceVisibility: "hidden",
@@ -100,19 +100,19 @@ export function LanyardFallback() {
               {/* Badge Header */}
               <div className="flex items-center justify-between border-b border-[var(--line)] pb-3">
                 <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent)]" />
+                  <span className="w-2 h-2 rounded-none bg-[var(--accent)]" />
                   <span className="text-[10px] font-mono tracking-widest uppercase font-bold text-[var(--ink-muted)]">
                     UNDIP • INFORMATICS
                   </span>
                 </div>
-                <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-[var(--surface-2)] text-[var(--accent)]">
+                <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-none border border-[var(--line)] bg-[var(--surface-2)] text-[var(--accent)]">
                   DHM-2026
                 </span>
               </div>
 
               {/* Photo & Identity */}
               <div className="flex flex-col items-center text-center my-auto py-2">
-                <div className="relative w-28 h-36 sm:w-32 sm:h-40 rounded-xl overflow-hidden border-2 border-[var(--line)] shadow-md bg-[var(--surface-2)] mb-3">
+                <div className="relative w-28 h-36 sm:w-32 sm:h-40 rounded-none overflow-hidden border-2 border-[var(--line)] shadow-[3px_3px_0px_var(--line)] bg-[var(--surface-2)] mb-3">
                   <Image
                     src="/foto.png"
                     alt="Dhimas Reza Nafi Wahyudi"
@@ -167,7 +167,7 @@ export function LanyardFallback() {
               </div>
 
               <div className="flex flex-col items-center justify-center my-auto text-center gap-3">
-                <div className="p-3 rounded-xl bg-white text-black shadow-inner">
+                <div className="p-3 rounded-none border-2 border-[var(--line)] bg-white text-black shadow-[3px_3px_0px_var(--line)]">
                   <QrCode className="w-24 h-24 stroke-[1.5]" />
                 </div>
                 <div>

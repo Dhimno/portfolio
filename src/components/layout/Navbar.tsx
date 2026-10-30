@@ -131,10 +131,10 @@ export function Navbar() {
                 key={item.id}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
+                className={`block px-4 py-2.5 rounded-none border-2 text-xs font-pixel uppercase tracking-wider transition-all ${
                   activeSection === item.id
-                    ? "bg-[var(--accent-soft)] text-[var(--accent)]"
-                    : "text-[var(--ink)] hover:bg-[var(--surface-2)]"
+                    ? "bg-[var(--surface-2)] text-[var(--accent)] border-[var(--line)] shadow-[2px_2px_0px_var(--accent)] font-bold"
+                    : "text-[var(--ink)] border-transparent hover:bg-[var(--surface-2)] hover:border-[var(--line)]"
                 }`}
               >
                 {item.label}

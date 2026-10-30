@@ -135,7 +135,7 @@ export function ExperienceSection() {
                         key={idx}
                         className="text-sm text-[var(--ink-muted)] flex items-start gap-2.5 leading-relaxed"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] mt-2 flex-shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-none bg-[var(--accent)] mt-2 flex-shrink-0" />
                         <span>{point}</span>
                       </li>
                     ))}

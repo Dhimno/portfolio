@@ -25,9 +25,9 @@ export function Marquee({ items, speed = 28, reverse = false }: MarqueeProps) {
         {repeated.map((item, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line)] text-sm font-medium whitespace-nowrap"
+            className="flex items-center gap-2 px-4 py-2 rounded-none bg-[var(--surface-2)] text-[var(--ink)] border-2 border-[var(--line)] shadow-[2px_2px_0px_var(--line)] text-xs font-pixel whitespace-nowrap"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
+            <span className="w-1.5 h-1.5 rounded-none bg-[var(--accent)]" />
             <span>{item}</span>
           </div>
         ))}

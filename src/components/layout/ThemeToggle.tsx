@@ -82,17 +82,17 @@ export function ThemeToggle() {
       onClick={handleToggle}
       title={isLight ? "Ganti ke Dark Mode (Mati)" : "Ganti ke Light Mode (Nyala)"}
       aria-label={isLight ? "Ganti ke Dark Mode (Mati)" : "Ganti ke Light Mode (Nyala)"}
-      className="relative inline-flex items-center w-[58px] h-[30px] p-[2px] rounded-sm bg-[#18181b] border-2 border-[#27272a] dark:border-[#52525b] shadow-inner cursor-pointer select-none overflow-hidden shrink-0 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
+      className="relative inline-flex items-center w-[58px] h-[30px] p-[2px] rounded-none bg-[#18181b] border-2 border-[var(--line)] shadow-[2px_2px_0px_var(--line)] hover:border-[var(--accent)] hover:shadow-[3px_3px_0px_var(--accent)] cursor-pointer select-none overflow-hidden shrink-0 transition-all focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
     >
       {/* Background Track: Left is Green (revealed in Light mode), Right is Red (revealed in Dark mode) */}
-      <div className="absolute inset-[2px] flex rounded-[1px] overflow-hidden">
+      <div className="absolute inset-[2px] flex rounded-none overflow-hidden">
         {/* Left Box: Green */}
         <div className="w-1/2 h-full bg-[#16a34a] border-r border-[#14532d]/40 flex items-center justify-center">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-100/70" />
+          <span className="w-1.5 h-1.5 rounded-none bg-emerald-100/80 shadow-[0_0_2px_#34d399]" />
         </div>
         {/* Right Box: Red */}
         <div className="w-1/2 h-full bg-[#dc2626] border-l border-[#7f1d1d]/40 flex items-center justify-center">
-          <span className="w-1.5 h-1.5 rounded-full bg-rose-100/70" />
+          <span className="w-1.5 h-1.5 rounded-none bg-rose-100/80 shadow-[0_0_2px_#f87171]" />
         </div>
       </div>
 
@@ -100,7 +100,7 @@ export function ThemeToggle() {
       <motion.div
         animate={{ x: isLight ? 25 : 0 }}
         transition={{ type: "spring", stiffness: 450, damping: 30 }}
-        className="relative z-10 w-[25px] h-[22px] rounded-[1px] overflow-hidden shadow-md border border-black/50"
+        className="relative z-10 w-[25px] h-[22px] rounded-none overflow-hidden shadow-md border border-black/80"
       >
         {/* Lamp OFF (Dark mode) */}
         {/* eslint-disable-next-line @next/next/no-img-element */}

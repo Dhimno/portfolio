@@ -571,7 +571,7 @@ export function AiSynapseSimulator() {
       {/* HUD Meta Header */}
       <div className="flex items-center justify-between border-b border-dashed border-[var(--line)] pb-1.5 text-[10px] font-mono text-[var(--ink-muted)]">
         <span className="flex items-center gap-1.5 text-[var(--accent)] font-semibold tracking-wider">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-none bg-[var(--accent)] animate-pulse" />
           SYNAPSE // GRAPH_V2
         </span>
         <span className="text-[9px] text-[var(--ink-muted)]">BEAM: 4 // L3 EXPANSION</span>

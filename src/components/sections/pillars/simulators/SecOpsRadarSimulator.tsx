@@ -476,7 +476,7 @@ export function SecOpsRadarSimulator() {
       {/* Top Telemetry Header */}
       <div className="flex items-center justify-between pb-1.5 border-b border-dashed border-[var(--line)] text-[10px] text-[var(--ink-muted)]">
         <div className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-none bg-emerald-500 animate-pulse" />
           <span className="font-pixel text-[9px] text-[var(--accent)] tracking-wider">
             RADAR // PPI-90
           </span>

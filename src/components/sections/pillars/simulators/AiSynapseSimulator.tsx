@@ -234,6 +234,7 @@ const INITIAL_EDGES: Edge[] = [
 
 export function AiSynapseSimulator() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Monospace streaming ticker states
   const [tokensPerSec, setTokensPerSec] = useState<number>(124);
@@ -315,16 +316,21 @@ export function AiSynapseSimulator() {
     let isMounted = true;
     let lastTime = performance.now();
 
-    // Resize handler to maintain sharp HiDPI rendering
-    const handleResize = () => {
-      if (!canvas) return;
-      const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      const displayWidth = Math.max(rect.width, 240);
-      const displayHeight = Math.max(rect.height, 160);
+    const container = containerRef.current;
+    if (!container) return;
 
-      canvas.width = Math.floor(displayWidth * dpr);
-      canvas.height = Math.floor(displayHeight * dpr);
+    // Resize handler to maintain sharp HiDPI rendering without infinite loop feedback
+    const handleResize = () => {
+      if (!canvas || !containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const displayWidth = Math.max(Math.floor(rect.width), 160);
+      const displayHeight = Math.max(Math.floor(rect.height), 120);
+
+      if (canvas.width !== displayWidth * dpr || canvas.height !== displayHeight * dpr) {
+        canvas.width = displayWidth * dpr;
+        canvas.height = displayHeight * dpr;
+      }
 
       // Recalculate node pixel positions based on canvas aspect
       nodesRef.current.forEach((node) => {
@@ -340,7 +346,7 @@ export function AiSynapseSimulator() {
     const resizeObserver = new ResizeObserver(() => {
       handleResize();
     });
-    resizeObserver.observe(canvas);
+    resizeObserver.observe(container);
     handleResize();
 
     // Trigger initial root pulse
@@ -353,7 +359,7 @@ export function AiSynapseSimulator() {
       const dt = Math.min((time - lastTime) / 1000, 0.1);
       lastTime = time;
 
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const width = canvas.width / dpr;
       const height = canvas.height / dpr;
 
@@ -573,11 +579,12 @@ export function AiSynapseSimulator() {
 
       {/* Interactive Neural Canvas */}
       <div
-        className="relative w-full flex-1 min-h-[160px] my-1 cursor-crosshair overflow-hidden"
+        ref={containerRef}
+        className="relative w-full flex-1 min-h-[140px] max-h-[190px] my-1 cursor-crosshair overflow-hidden"
         onClick={handleCanvasClick}
         title="Click to pulse neural synapse tree"
       >
-        <canvas ref={canvasRef} className="w-full h-full block" />
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block" />
       </div>
 
       {/* Monospace Streaming Token Ticker */}

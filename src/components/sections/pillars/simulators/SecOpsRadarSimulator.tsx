@@ -27,7 +27,7 @@ const THREAT_TYPES = [
 
 export function SecOpsRadarSimulator() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const viewportRef = useRef<HTMLDivElement | null>(null);
 
   const [neutralizedCount, setNeutralizedCount] = useState<number>(0);
   const [activeBanner, setActiveBanner] = useState<string | null>(null);
@@ -91,28 +91,27 @@ export function SecOpsRadarSimulator() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const container = containerRef.current;
-    if (!canvas || !container) return;
+    const viewport = viewportRef.current;
+    if (!canvas || !viewport) return;
 
-    let width = container.clientWidth || 280;
-    let height = container.clientHeight || 280;
+    let width = 200;
+    let height = 200;
 
     const updateCanvasDimensions = () => {
-      if (!canvas || !container) return;
-      const rect = container.getBoundingClientRect();
+      if (!canvas || !viewportRef.current) return;
+      const rect = viewportRef.current.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = Math.max(rect.width, 220);
-      height = Math.max(rect.height, 220);
+      // Radar circle is bounded at max 200px diameter to prevent infinite expansion
+      const size = Math.max(160, Math.min(Math.floor(rect.width) - 24, 200));
 
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-
-      const ctx = canvas.getContext("2d");
-      if (ctx) {
-        ctx.scale(dpr, dpr);
+      if (canvas.width !== size * dpr || canvas.height !== size * dpr) {
+        canvas.width = size * dpr;
+        canvas.height = size * dpr;
+        canvas.style.width = `${size}px`;
+        canvas.style.height = `${size}px`;
       }
+      width = size;
+      height = size;
     };
 
     updateCanvasDimensions();
@@ -120,7 +119,7 @@ export function SecOpsRadarSimulator() {
     const resizeObserver = new ResizeObserver(() => {
       updateCanvasDimensions();
     });
-    resizeObserver.observe(container);
+    resizeObserver.observe(viewport);
 
     // Initial spawn
     spawnAnomaly(Math.min(width, height) / 2);
@@ -157,6 +156,10 @@ export function SecOpsRadarSimulator() {
       const prevSweep = sweepAngleRef.current;
       sweepAngleRef.current = (sweepAngleRef.current + sweepSpeed * dt) % (Math.PI * 2);
       const currentSweep = sweepAngleRef.current;
+
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      ctx.save();
+      ctx.scale(dpr, dpr);
 
       // Clear frame
       ctx.clearRect(0, 0, width, height);
@@ -432,6 +435,8 @@ export function SecOpsRadarSimulator() {
       // Cleanup destroyed anomalies
       anomaliesRef.current = anomaliesRef.current.filter((a) => a.status !== "destroyed");
 
+      ctx.restore();
+
       rafIdRef.current = requestAnimationFrame(render);
     };
 
@@ -467,10 +472,7 @@ export function SecOpsRadarSimulator() {
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full h-full flex flex-col justify-between select-none font-mono"
-    >
+    <div className="relative w-full h-full flex flex-col justify-between select-none font-mono">
       {/* Top Telemetry Header */}
       <div className="flex items-center justify-between pb-1.5 border-b border-dashed border-[var(--line)] text-[10px] text-[var(--ink-muted)]">
         <div className="flex items-center gap-1.5">
@@ -485,13 +487,16 @@ export function SecOpsRadarSimulator() {
       </div>
 
       {/* Main Radar Display Viewport */}
-      <div className="relative my-auto py-1 flex items-center justify-center w-full min-h-[210px] sm:min-h-[230px]">
+      <div
+        ref={viewportRef}
+        className="relative my-auto py-1 flex items-center justify-center w-full h-[210px] overflow-hidden"
+      >
         <canvas
           ref={canvasRef}
           onClick={handleCanvasClick}
           role="img"
           aria-label="Security Operations radar simulator displaying rotating sweep and threat detection"
-          className="cursor-crosshair rounded-full shadow-inner shadow-black/60 touch-none"
+          className="cursor-crosshair rounded-full shadow-inner shadow-black/60 touch-none shrink-0"
         />
 
         {/* Transient Status Banner Overlay */}

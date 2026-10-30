@@ -109,7 +109,7 @@ export function RetroChassis({
         </div>
 
         {/* Viewport Container with Fixed Height and Scanlines */}
-        <div className="relative flex-1 h-[340px] sm:h-[350px] flex flex-col bg-[var(--surface)] overflow-hidden">
+        <div className="relative flex-1 h-[340px] sm:h-[350px] max-h-[350px] min-h-0 flex flex-col bg-[var(--surface)] overflow-hidden">
           {/* Phosphor CRT Scanlines Overlay */}
           <div
             className="absolute inset-0 pointer-events-none z-20 select-none opacity-20 dark:opacity-40"
@@ -127,7 +127,7 @@ export function RetroChassis({
           />
 
           {/* Viewport Content */}
-          <div className="relative z-10 flex-1 flex flex-col w-full h-full p-4 sm:p-5">
+          <div className="relative z-10 flex-1 min-h-0 flex flex-col w-full h-full p-4 sm:p-5 overflow-hidden">
             {children}
           </div>
         </div>

@@ -39,7 +39,7 @@ export function ExperienceSection() {
             </div>
 
             {/* Filter Tabs - Retro Pixel Segmented Chassis */}
-            <div className="flex items-center gap-1.5 p-1.5 bg-[var(--surface-2)] border-2 border-[var(--line)] shadow-[3px_3px_0px_var(--line)] self-start sm:self-auto rounded-none">
+            <div className="flex flex-wrap sm:flex-nowrap items-center gap-1.5 p-1.5 bg-[var(--surface-2)] border-2 border-[var(--line)] shadow-[3px_3px_0px_var(--line)] self-start sm:self-auto rounded-none">
               {(
                 [
                   { id: "all", label: t.experience.tabAll },
@@ -62,13 +62,13 @@ export function ExperienceSection() {
                       }
                       setFilter(tab.id);
                     }}
-                    className={`px-3 py-1.5 text-xs font-pixel tracking-wider select-none cursor-pointer transition-all border ${
+                    className={`px-3 py-1.5 text-xs font-pixel tracking-wider select-none cursor-pointer transition-all border whitespace-nowrap shrink-0 ${
                       isActive
                         ? "border-[var(--line)] bg-[var(--surface)] text-[var(--accent)] font-bold shadow-[2px_2px_0px_var(--accent)]"
                         : "border-transparent text-[var(--ink-muted)] hover:text-[var(--ink)] hover:border-[var(--line)]/50"
                     }`}
                   >
-                    <span className="flex items-center gap-1">
+                    <span className="flex items-center gap-1 whitespace-nowrap">
                       {isActive && <span className="text-[var(--accent)] text-[10px]">▶</span>}
                       <span>{tab.label}</span>
                     </span>

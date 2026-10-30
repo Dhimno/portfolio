@@ -93,8 +93,8 @@ export function PillarsSection() {
             <div className="max-w-3xl space-y-2">
               <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-black tracking-[-0.04em] text-[var(--ink)]">
                 {locale === "id"
-                  ? "Fondasi Rekayasa & Fokus Spesialisasi"
-                  : "Engineering Foundations & Specialization Focus"}
+                  ? "Fokus Spesialisasi"
+                  : "Specialization Focus"}
               </h2>
               <p className="font-body text-sm sm:text-base text-[var(--ink-muted)] leading-relaxed">
                 {locale === "id"

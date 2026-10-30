@@ -17,7 +17,7 @@ export function HomeSection() {
     <section id="home" className="relative min-h-[calc(100vh-64px)] w-full flex flex-col justify-center scroll-mt-16 overflow-hidden">
       <RippleGrid cellSize={54} className="min-h-[calc(100vh-64px)] w-full flex flex-col justify-center">
         <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 my-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
             {/* Left Column: Headline & Value Proposition (7 cols) */}
             <motion.div
               initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
@@ -25,10 +25,10 @@ export function HomeSection() {
               viewport={{ once: false, amount: 0.2 }}
               transition={{ ...springTransition, duration: 0.5 }}
               data-disable-ripple="true"
-              className="lg:col-span-7 space-y-6 select-text pointer-events-auto"
+              className="lg:col-span-7 space-y-6 select-text pointer-events-auto min-w-0"
             >
               {/* Main Headline with Large, Bold Typography & Terminal Cursor */}
-              <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-[-0.04em] text-[var(--ink)] leading-[1.03]">
+              <h1 className="font-display text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-[-0.04em] text-[var(--ink)] leading-[1.08]">
                 {locale === "id" ? (
                   <>
                     Hai! Saya{" "}

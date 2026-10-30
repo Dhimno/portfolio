@@ -83,7 +83,7 @@ export function Navbar() {
                 className={`relative px-3 py-1.5 text-[11px] font-pixel uppercase tracking-wider transition-colors rounded-none focus-visible:outline-2 focus-visible:outline-[var(--accent)] ${
                   isActive
                     ? "text-[var(--accent)] font-bold"
-                    : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
+                    : "text-[var(--ink-muted)] hover:text-[var(--accent)]"
                 }`}
               >
                 {item.label}

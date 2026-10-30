@@ -5,11 +5,11 @@ A reusable retro-styled chassis container for the engineering pillar cards. It f
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Card border renders with stepped pixel-cut corners and subtle retro borders.
-- [ ] Phosphor CRT horizontal scanline texture is overlaid across the simulation viewport without interfering with pointer events.
-- [ ] Header displays the section designation in pixel/mono typography with a subtle status indicator LED.
-- [ ] Dual-mode text buttons `[ LIVE TELEMETRY ]` and `[ TECH ARSENAL ]` are accessible via mouse, touch, and keyboard.
-- [ ] Switching modes smoothly toggles the internal card view without jumping or changing the overall card dimensions.
-- [ ] Audio click cue plays upon switching modes if audio is unmuted, and remains completely silent when muted.
+- [x] Card border renders with stepped pixel-cut corners and subtle retro borders.
+- [x] Phosphor CRT horizontal scanline texture is overlaid across the simulation viewport without interfering with pointer events.
+- [x] Header displays the section designation in pixel/mono typography with a subtle status indicator LED.
+- [x] Dual-mode text buttons `[ LIVE TELEMETRY ]` and `[ TECH ARSENAL ]` are accessible via mouse, touch, and keyboard.
+- [x] Switching modes smoothly toggles the internal card view without jumping or changing the overall card dimensions.
+- [x] Audio click cue plays upon switching modes if audio is unmuted, and remains completely silent when muted.

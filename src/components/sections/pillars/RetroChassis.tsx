@@ -35,6 +35,10 @@ export function RetroChassis({
   children,
   className = "",
   headerSlot,
+  tabLabels = {
+    telemetry: "[ LIVE TELEMETRY ]",
+    arsenal: "[ TECH ARSENAL ]",
+  },
 }: RetroChassisProps) {
   const handleTabClick = (tab: "telemetry" | "arsenal") => {
     if (tab === activeTab) return;
@@ -87,7 +91,7 @@ export function RetroChassis({
                 : "text-[var(--ink-muted)] hover:text-[var(--ink)] border-transparent"
             } focus-visible:outline-2 focus-visible:outline-[var(--accent)]`}
           >
-            [ LIVE TELEMETRY ]
+            {tabLabels.telemetry}
           </button>
           <button
             type="button"
@@ -100,12 +104,12 @@ export function RetroChassis({
                 : "text-[var(--ink-muted)] hover:text-[var(--ink)] border-transparent"
             } focus-visible:outline-2 focus-visible:outline-[var(--accent)]`}
           >
-            [ TECH ARSENAL ]
+            {tabLabels.arsenal}
           </button>
         </div>
 
-        {/* Viewport Container with Fixed Min-Height and Scanlines */}
-        <div className="relative flex-1 min-h-[300px] flex flex-col bg-[var(--surface)] overflow-hidden">
+        {/* Viewport Container with Fixed Height and Scanlines */}
+        <div className="relative flex-1 h-[340px] sm:h-[350px] flex flex-col bg-[var(--surface)] overflow-hidden">
           {/* Phosphor CRT Scanlines Overlay */}
           <div
             className="absolute inset-0 pointer-events-none z-20 select-none opacity-20 dark:opacity-40"

@@ -5,10 +5,10 @@ The Tech Arsenal view and full responsive polish for the Core Pillars section. W
 
 **Blocked by:** 02 (SecOps Radar Sweep & Anomaly Takedown Simulator), 03 (Applied AI Expanding Synapse & Token Stream Simulator), 04 (Systems & Infrastructure Live Telemetry Simulator)
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Tech Arsenal view displays categorized tool chips matching the exact expertise described in the spec.
-- [ ] Card height remains fixed and balanced between Telemetry and Arsenal views across desktop and mobile.
-- [ ] Full bilingual support: all headers, mode labels, tool descriptions, and status tickers adapt seamlessly between Indonesian and English.
-- [ ] Mobile responsive layout stacks smoothly on smartphone screens without horizontal scroll or broken scanlines.
-- [ ] Lint and build checks (`npm run lint` and `npm run build`) pass cleanly with zero errors or warnings.
+- [x] Tech Arsenal view displays categorized tool chips matching the exact expertise described in the spec.
+- [x] Card height remains fixed and balanced between Telemetry and Arsenal views across desktop and mobile.
+- [x] Full bilingual support: all headers, mode labels, tool descriptions, and status tickers adapt seamlessly between Indonesian and English.
+- [x] Mobile responsive layout stacks smoothly on smartphone screens without horizontal scroll or broken scanlines.
+- [x] Lint and build checks (`npm run lint` and `npm run build`) pass cleanly with zero errors or warnings.

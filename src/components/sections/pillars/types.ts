@@ -2,6 +2,11 @@ import React from "react";
 
 export type PillarMode = "telemetry" | "arsenal";
 
+export interface PillarCategoryTools {
+  category: string;
+  items: string[];
+}
+
 export interface PillarData {
   id: string;
   code: string;
@@ -10,6 +15,7 @@ export interface PillarData {
   desc: string;
   icon: React.ComponentType<{ className?: string }>;
   tools?: string[];
+  categories?: PillarCategoryTools[];
   statusText?: string;
 }
 
@@ -21,6 +27,10 @@ export interface RetroChassisProps {
   children: React.ReactNode;
   className?: string;
   headerSlot?: React.ReactNode;
+  tabLabels?: {
+    telemetry: string;
+    arsenal: string;
+  };
 }
 
 export interface PillarCardProps {

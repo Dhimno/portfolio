@@ -9,6 +9,8 @@ import {
   AiSynapseSimulator,
   SystemsTelemetrySimulator,
 } from "./simulators";
+import { TechArsenalView } from "./TechArsenalView";
+import { useI18n } from "../../../lib/i18n";
 
 export function PillarCard({
   pillar,
@@ -17,6 +19,7 @@ export function PillarCard({
   defaultTab = "telemetry",
   className = "",
 }: PillarCardProps) {
+  const { locale } = useI18n();
   const [activeTab, setActiveTab] = useState<PillarMode>(defaultTab);
   const Icon = pillar.icon;
 
@@ -43,6 +46,10 @@ export function PillarCard({
       activeTab={activeTab}
       onTabChange={setActiveTab}
       headerSlot={headerSlot}
+      tabLabels={{
+        telemetry: locale === "id" ? "[ TELEMETRI LIVE ]" : "[ LIVE TELEMETRY ]",
+        arsenal: locale === "id" ? "[ ARSENAL TEKNIS ]" : "[ TECH ARSENAL ]",
+      }}
       className={className}
     >
       <AnimatePresence mode="wait">
@@ -94,36 +101,7 @@ export function PillarCard({
           ) : arsenalContent ? (
             <div className="w-full h-full flex flex-col flex-1">{arsenalContent}</div>
           ) : (
-            <div className="w-full h-full flex flex-col justify-between flex-1">
-              <div>
-                <p className="font-body text-xs sm:text-sm text-[var(--ink-muted)] leading-relaxed mb-4">
-                  {pillar.desc}
-                </p>
-
-                {pillar.tools && pillar.tools.length > 0 && (
-                  <div>
-                    <span className="block font-mono text-[10px] tracking-wider uppercase text-[var(--accent)] mb-2 font-semibold">
-                      KEY TOOLING & ARSENAL:
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {pillar.tools.map((tool) => (
-                        <span
-                          key={tool}
-                          className="font-mono text-[10px] sm:text-[11px] px-2 py-0.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line)] transition-colors hover:border-[var(--accent)] cursor-default"
-                        >
-                          {tool}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <div className="pt-3 mt-4 border-t border-dashed border-[var(--line)] flex items-center justify-between text-[10px] font-mono text-[var(--ink-muted)]">
-                <span>VIEW: TECH_MATRIX</span>
-                <span>STATUS: VERIFIED</span>
-              </div>
-            </div>
+            <TechArsenalView pillar={pillar} />
           )}
         </motion.div>
       </AnimatePresence>

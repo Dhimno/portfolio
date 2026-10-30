@@ -21,7 +21,17 @@ export function PillarsSection() {
         locale === "id"
           ? "Pemantauan ancaman endpoint via EDR, investigasi anomali, triase insiden, dan penerapan tata kelola akses least-privilege di lingkungan terdistribusi."
           : "Endpoint threat monitoring via EDR, anomaly triage, incident escalation, and least-privilege credential governance across enterprise environments.",
-      tools: ["EDR", "Wazuh", "Suricata", "Wireshark", "Splunk", "SIEM"],
+      tools: ["Wazuh", "Suricata", "EDR", "Splunk", "Wireshark", "Least-Privilege"],
+      categories: [
+        {
+          category: locale === "id" ? "Deteksi & Telemetri" : "Detection & Telemetry",
+          items: ["Wazuh SIEM", "Suricata IDS", "EDR Telemetry", "Splunk / ELK"],
+        },
+        {
+          category: locale === "id" ? "Investigasi & Tata Kelola" : "Investigation & Governance",
+          items: ["Least-Privilege IAM", "Incident Triage", "Wireshark", "Packet Forensics"],
+        },
+      ],
       statusText: "active",
     },
     {
@@ -34,7 +44,17 @@ export function PillarsSection() {
         locale === "id"
           ? "Eksplorasi arsitektur Large Language Model, pembuatan AI Agent modular, serta implementasi pipeline pemrosesan data science terstruktur."
           : "Architecting modular LLM agents, exploring generative AI workflows, and structuring end-to-end data science processing pipelines.",
-      tools: ["PyTorch", "Transformers", "LangChain", "Hugging Face", "RAG", "Ollama"],
+      tools: ["PyTorch", "Transformers", "LangChain", "vLLM", "RAG", "Ollama"],
+      categories: [
+        {
+          category: locale === "id" ? "Model & Inferensi" : "Models & Inference",
+          items: ["PyTorch", "Transformers", "vLLM / Ollama", "Hugging Face"],
+        },
+        {
+          category: locale === "id" ? "Orkestrasi & Agen" : "Orchestration & Agents",
+          items: ["LangChain", "RAG & Vector Search", "Multi-Agent Systems", "Data Pipelines"],
+        },
+      ],
       statusText: "active",
     },
     {
@@ -47,7 +67,17 @@ export function PillarsSection() {
         locale === "id"
           ? "Pengembangan software native dengan Rust dan Tauri, manajemen server homelab Linux 24/7, dan perancangan sistem web performa tinggi."
           : "Crafting native desktop software with Rust and Tauri, managing 24/7 Linux homelab infrastructure, and building scalable full-stack web platforms.",
-      tools: ["Rust", "Tauri", "Linux", "Docker", "Proxmox", "WireGuard"],
+      tools: ["Rust", "Tauri", "Linux", "Proxmox", "Docker", "WireGuard"],
+      categories: [
+        {
+          category: locale === "id" ? "Native & Low-Level" : "Native & Low-Level",
+          items: ["Rust", "Tauri", "Linux Daemons", "Kernel Tuning"],
+        },
+        {
+          category: locale === "id" ? "Infrastruktur & Server" : "Infrastructure & Server",
+          items: ["Proxmox PVE", "Docker & Compose", "WireGuard VPN", "24/7 Homelab Cluster"],
+        },
+      ],
       statusText: "active",
     },
   ];

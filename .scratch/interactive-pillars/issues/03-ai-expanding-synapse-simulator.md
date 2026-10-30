@@ -5,10 +5,10 @@ A live interactive micro-simulator for the Applied Artificial Intelligence pilla
 
 **Blocked by:** 01 (Retro Chassis Container & Dual Mode Switcher)
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Canvas or SVG renders a root neural graph that branches outward with connected synapse lines.
-- [ ] Nodes periodically expand, pulse, and activate with luminous energy flow representing token generation.
-- [ ] A subtle monospace ticker below the graph displays simulated streaming token generations and latency metrics (`tokens/s`, `context window`).
-- [ ] Visual aesthetic avoids generic gradients, utilizing crisp pixel/cyber phosphor hues matching the portfolio palette.
-- [ ] Animation cycle cleans up properly on unmount without runaway timers or background CPU consumption.
+- [x] Canvas or SVG renders a root neural graph that branches outward with connected synapse lines.
+- [x] Nodes periodically expand, pulse, and activate with luminous energy flow representing token generation.
+- [x] A subtle monospace ticker below the graph displays simulated streaming token generations and latency metrics (`tokens/s`, `context window`).
+- [x] Visual aesthetic avoids generic gradients, utilizing crisp pixel/cyber phosphor hues matching the portfolio palette.
+- [x] Animation cycle cleans up properly on unmount without runaway timers or background CPU consumption.

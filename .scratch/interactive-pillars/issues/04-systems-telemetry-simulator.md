@@ -5,10 +5,10 @@ A live interactive micro-simulator for the Systems & Infrastructure pillar. It m
 
 **Blocked by:** 01 (Retro Chassis Container & Dual Mode Switcher)
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Telemetry dashboard renders dynamic ASCII/bar progress meters for CPU utilization and memory.
-- [ ] Metric values fluctuate naturally at randomized intervals to simulate genuine real-time server load.
-- [ ] Active service badges display status for homelab daemons (e.g. `proxmox-pve: ok`, `wireguard: online`, `rust-daemon: running`).
-- [ ] A compact rolling log stream displays simulated low-level system logs in monospace typography.
-- [ ] Animation and metric update intervals clean up reliably on component unmount.
+- [x] Telemetry dashboard renders dynamic ASCII/bar progress meters for CPU utilization and memory.
+- [x] Metric values fluctuate naturally at randomized intervals to simulate genuine real-time server load.
+- [x] Active service badges display status for homelab daemons (e.g. `proxmox-pve: ok`, `wireguard: online`, `rust-daemon: running`).
+- [x] A compact rolling log stream displays simulated low-level system logs in monospace typography.
+- [x] Animation and metric update intervals clean up reliably on component unmount.

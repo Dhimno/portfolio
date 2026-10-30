@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PillarCardProps, PillarMode } from "./types";
 import { RetroChassis } from "./RetroChassis";
+import { SystemsTelemetrySimulator } from "./simulators";
 
 export function PillarCard({
   pillar,
@@ -14,6 +15,9 @@ export function PillarCard({
 }: PillarCardProps) {
   const [activeTab, setActiveTab] = useState<PillarMode>(defaultTab);
   const Icon = pillar.icon;
+  const renderedTelemetry =
+    telemetryContent ||
+    (pillar.id === "systems" ? <SystemsTelemetrySimulator /> : null);
 
   const headerSlot = (
     <div className="flex items-start gap-3">
@@ -50,8 +54,8 @@ export function PillarCard({
           className="w-full h-full flex flex-col flex-1"
         >
           {activeTab === "telemetry" ? (
-            telemetryContent ? (
-              <div className="w-full h-full flex flex-col flex-1">{telemetryContent}</div>
+            renderedTelemetry ? (
+              <div className="w-full h-full flex flex-col flex-1">{renderedTelemetry}</div>
             ) : (
               <div className="w-full h-full flex flex-col justify-between flex-1 font-mono text-xs text-[var(--ink-muted)]">
                 {/* Fallback Cockpit Standby Telemetry HUD */}

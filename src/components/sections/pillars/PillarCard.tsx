@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PillarCardProps, PillarMode } from "./types";
 import { RetroChassis } from "./RetroChassis";
+import { SecOpsRadarSimulator } from "./simulators/SecOpsRadarSimulator";
 
 export function PillarCard({
   pillar,
@@ -52,6 +53,8 @@ export function PillarCard({
           {activeTab === "telemetry" ? (
             telemetryContent ? (
               <div className="w-full h-full flex flex-col flex-1">{telemetryContent}</div>
+            ) : pillar.id === "secops" ? (
+              <SecOpsRadarSimulator />
             ) : (
               <div className="w-full h-full flex flex-col justify-between flex-1 font-mono text-xs text-[var(--ink-muted)]">
                 {/* Fallback Cockpit Standby Telemetry HUD */}

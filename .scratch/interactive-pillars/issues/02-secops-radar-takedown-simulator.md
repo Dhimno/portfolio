@@ -5,11 +5,11 @@ A live interactive micro-simulator for the Security Operations pillar. It displa
 
 **Blocked by:** 01 (Retro Chassis Container & Dual Mode Switcher)
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Radar PPI displays concentric range rings, crosshairs, and a smooth continuously rotating sweep beam.
-- [ ] Randomized anomaly targets periodically appear within the radar boundary.
-- [ ] A targeting reticle identifies and locks onto the detected anomaly blip.
-- [ ] An active takedown sequence neutralizes the anomaly, showing a transient alert status banner (`THREAT NEUTRALIZED // LOGGED`).
-- [ ] Animation loop runs via `requestAnimationFrame` with proper unmount cleanup and zero memory leaks.
-- [ ] Performance remains smooth (60fps) on both desktop and mobile viewports.
+- [x] Radar PPI displays concentric range rings, crosshairs, and a smooth continuously rotating sweep beam.
+- [x] Randomized anomaly targets periodically appear within the radar boundary.
+- [x] A targeting reticle identifies and locks onto the detected anomaly blip.
+- [x] An active takedown sequence neutralizes the anomaly, showing a transient alert status banner (`THREAT NEUTRALIZED // LOGGED`).
+- [x] Animation loop runs via `requestAnimationFrame` with proper unmount cleanup and zero memory leaks.
+- [x] Performance remains smooth (60fps) on both desktop and mobile viewports.

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PillarCardProps, PillarMode } from "./types";
 import { RetroChassis } from "./RetroChassis";
 import { SecOpsRadarSimulator } from "./simulators/SecOpsRadarSimulator";
+import { AiSynapseSimulator } from "./simulators/AiSynapseSimulator";
 
 export function PillarCard({
   pillar,
@@ -55,6 +56,8 @@ export function PillarCard({
               <div className="w-full h-full flex flex-col flex-1">{telemetryContent}</div>
             ) : pillar.id === "secops" ? (
               <SecOpsRadarSimulator />
+            ) : pillar.id === "ai" ? (
+              <AiSynapseSimulator />
             ) : (
               <div className="w-full h-full flex flex-col justify-between flex-1 font-mono text-xs text-[var(--ink-muted)]">
                 {/* Fallback Cockpit Standby Telemetry HUD */}

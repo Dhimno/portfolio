@@ -82,7 +82,7 @@ export function HomeSection() {
                   whileTap={{ scale: 0.98 }}
                   transition={springTransition}
                   href="#projects"
-                  className="inline-flex items-center justify-center px-6 py-3.5 bg-[var(--accent)] hover:bg-[var(--accent-strong)] text-white font-sans text-sm font-semibold rounded-xl transition-colors shadow-sm min-h-[44px]"
+                  className="inline-flex items-center justify-center px-6 py-3.5 bg-[var(--accent)] hover:bg-[var(--accent-strong)] text-white font-pixel text-xs tracking-wider border-2 border-[var(--ink)] shadow-[3px_3px_0px_var(--ink)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_var(--ink)] rounded-none transition-all min-h-[44px]"
                 >
                   <FolderGit2 className="w-4 h-4 mr-2" />
                   <span>{t.hero.ctaProjects}</span>
@@ -93,7 +93,7 @@ export function HomeSection() {
                   whileTap={{ scale: 0.98 }}
                   transition={springTransition}
                   href="#contacts"
-                  className="inline-flex items-center justify-center px-6 py-3.5 bg-[var(--surface)] border border-[var(--line)] hover:border-[var(--ink)] text-[var(--ink)] font-sans text-sm font-semibold rounded-xl transition-colors min-h-[44px]"
+                  className="inline-flex items-center justify-center px-6 py-3.5 bg-[var(--surface)] border-2 border-[var(--ink)] hover:border-[var(--accent)] text-[var(--ink)] hover:text-[var(--accent)] font-pixel text-xs tracking-wider shadow-[3px_3px_0px_var(--ink)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_var(--ink)] rounded-none transition-all min-h-[44px]"
                 >
                   <Mail className="w-4 h-4 mr-2" />
                   <span>{locale === "id" ? "Hubungi Saya" : "Get in Touch"}</span>
@@ -110,7 +110,7 @@ export function HomeSection() {
               data-disable-ripple="true"
               className="lg:col-span-5 flex justify-center lg:justify-end select-text pointer-events-auto"
             >
-              <div className="relative w-72 sm:w-80 lg:w-92 aspect-[2/3] rounded-2xl overflow-hidden bg-[var(--surface)] border border-[var(--line)] shadow-xl group">
+              <div className="relative w-72 sm:w-80 lg:w-92 aspect-[2/3] rounded-none overflow-hidden bg-[var(--surface)] border-2 border-[var(--line)] shadow-[6px_6px_0px_var(--line)] group">
                 <Image
                   src="/foto.png"
                   alt="Dhimas Reza Nafi Wahyudi"

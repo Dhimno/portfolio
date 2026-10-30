@@ -61,13 +61,13 @@ export function Navbar() {
         {/* Left: Brand Logo & Handle */}
         <a
           href="#home"
-          className="flex items-center space-x-2.5 group focus-visible:outline-2 focus-visible:outline-[var(--accent)] rounded-lg select-none"
+          className="flex items-center space-x-2.5 group focus-visible:outline-2 focus-visible:outline-[var(--accent)] rounded-none select-none"
           aria-label="Home dhimno"
         >
           <div className="text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors">
             <Logo className="w-7 h-7" />
           </div>
-          <span className="font-display font-bold text-base tracking-tight text-[var(--ink)]">
+          <span className="font-pixel font-bold text-sm tracking-wider text-[var(--ink)]">
             dhimno
           </span>
         </a>
@@ -80,9 +80,9 @@ export function Navbar() {
               <a
                 key={item.id}
                 href={item.href}
-                className={`relative px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors rounded-md focus-visible:outline-2 focus-visible:outline-[var(--accent)] ${
+                className={`relative px-3 py-1.5 text-[11px] font-pixel uppercase tracking-wider transition-colors rounded-none focus-visible:outline-2 focus-visible:outline-[var(--accent)] ${
                   isActive
-                    ? "text-[var(--accent)]"
+                    ? "text-[var(--accent)] font-bold"
                     : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
                 }`}
               >
@@ -90,7 +90,7 @@ export function Navbar() {
                 {isActive && (
                   <motion.div
                     layoutId="activeNavIndicator"
-                    className="absolute bottom-0 left-3 right-3 h-[2px] bg-[var(--accent)]"
+                    className="absolute bottom-0 left-2 right-2 h-[3px] bg-[var(--accent)]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -108,7 +108,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden flex items-center justify-center w-9 h-9 rounded-md bg-[var(--surface-2)] text-[var(--ink)] hover:text-[var(--accent)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--accent)]"
+            className="md:hidden flex items-center justify-center w-9 h-9 rounded-none border-2 border-[var(--line)] shadow-[2px_2px_0px_var(--line)] bg-[var(--surface-2)] text-[var(--ink)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--accent)] cursor-pointer"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
           >

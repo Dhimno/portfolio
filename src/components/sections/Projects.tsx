@@ -12,6 +12,7 @@ import { Orb } from "../ui/Orb";
 import { DynamicCompanion } from "../companions/DynamicCompanion";
 import { useSpawnContext } from "../companions/SpawnContext";
 import { SpawnSlot } from "../companions/types";
+import { playPokeSound } from "../../lib/sound";
 
 export function ProjectsSection() {
   const { t, locale } = useI18n();
@@ -109,33 +110,38 @@ export function ProjectsSection() {
               </p>
             </div>
 
-            {/* Filter Chips */}
-            <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-[var(--surface-2)] border border-[var(--line)] self-start sm:self-auto">
-                {categories.map((cat) => {
-                  const isActive = activeCategory === cat.id;
-                  return (
-                    <button
-                      key={cat.id}
-                      type="button"
-                      onClick={() => setActiveCategory(cat.id)}
-                      className={`relative px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer select-none ${
-                        isActive
-                          ? "text-[var(--accent)] font-semibold"
-                          : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
-                      }`}
-                    >
-                      {isActive && (
-                        <motion.span
-                          layoutId="activeFilterPill"
-                          className="absolute inset-0 rounded-lg bg-[var(--surface)] shadow-sm border border-[var(--line)]/60"
-                          transition={{ type: "spring", stiffness: 450, damping: 32 }}
-                        />
-                      )}
-                      <span className="relative z-10">{cat.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
+            {/* Filter Chips - Retro Pixel Segmented Chassis */}
+            <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-[var(--surface-2)] border-2 border-[var(--line)] shadow-[3px_3px_0px_var(--line)] self-start sm:self-auto rounded-none">
+              {categories.map((cat) => {
+                const isActive = activeCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => {
+                      if (!isActive) {
+                        try {
+                          playPokeSound();
+                        } catch {
+                          // Ignore
+                        }
+                      }
+                      setActiveCategory(cat.id);
+                    }}
+                    className={`relative px-3 py-1.5 text-xs font-pixel tracking-wider select-none cursor-pointer transition-all border ${
+                      isActive
+                        ? "border-[var(--line)] bg-[var(--surface)] text-[var(--accent)] font-bold shadow-[2px_2px_0px_var(--accent)]"
+                        : "border-transparent text-[var(--ink-muted)] hover:text-[var(--ink)] hover:border-[var(--line)]/50"
+                    }`}
+                  >
+                    <span className="relative z-10 flex items-center gap-1">
+                      {isActive && <span className="text-[var(--accent)] text-[10px]">▶</span>}
+                      <span>{cat.label}</span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
             </div>
         </BlurReveal>
 
@@ -177,7 +183,7 @@ export function ProjectsSection() {
                         setSelectedProject(project);
                       }
                     }}
-                    className="group relative z-10 w-full h-full rounded-2xl bg-[var(--surface)] border border-[var(--line)] hover:border-[var(--accent)]/50 focus-visible:outline-2 focus-visible:outline-[var(--accent)] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
+                    className="group relative z-10 w-full h-full rounded-none bg-[var(--surface)] border-2 border-[var(--line)] hover:border-[var(--accent)] focus-visible:outline-2 focus-visible:outline-[var(--accent)] shadow-[4px_4px_0px_var(--line)] hover:shadow-[5px_5px_0px_var(--accent)] transition-all duration-200 flex flex-col justify-between overflow-hidden cursor-pointer"
                   >
                   {/* Top Cover Visual */}
                   <div className="relative w-full h-48 sm:h-56 bg-[var(--surface-2)] overflow-hidden">
@@ -251,7 +257,7 @@ export function ProjectsSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-[var(--surface)] border border-[var(--line)] shadow-2xl p-6 sm:p-8 z-10 text-[var(--ink)]"
+              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-none bg-[var(--surface)] border-2 border-[var(--line)] shadow-[8px_8px_0px_rgba(0,0,0,0.6)] p-6 sm:p-8 z-10 text-[var(--ink)]"
             >
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div>
@@ -269,7 +275,7 @@ export function ProjectsSection() {
                 <button
                   type="button"
                   onClick={() => setSelectedProject(null)}
-                  className="p-2 rounded-xl bg-[var(--surface-2)] text-[var(--ink)] hover:text-[var(--accent)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--accent)] cursor-pointer"
+                  className="p-2 rounded-none bg-[var(--surface-2)] border-2 border-[var(--line)] shadow-[2px_2px_0px_var(--line)] text-[var(--ink)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--accent)] cursor-pointer"
                   aria-label={t.projects.close}
                 >
                   <X className="w-5 h-5" />

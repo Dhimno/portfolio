@@ -55,7 +55,7 @@ export function Footer() {
             <a
               href="mailto:dhimnooo@gmail.com"
               aria-label="Direct Email"
-              className="flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--surface-2)] text-[var(--ink)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all border border-[var(--line)] shadow-sm"
+              className="flex items-center justify-center w-9 h-9 rounded-none bg-[var(--surface-2)] text-[var(--ink)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all border-2 border-[var(--line)] shadow-[2px_2px_0px_var(--line)] hover:shadow-[3px_3px_0px_var(--accent)]"
             >
               <Mail className="w-4 h-4" />
             </a>
@@ -64,7 +64,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--surface-2)] text-[var(--ink)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all border border-[var(--line)] shadow-sm"
+              className="flex items-center justify-center w-9 h-9 rounded-none bg-[var(--surface-2)] text-[var(--ink)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all border-2 border-[var(--line)] shadow-[2px_2px_0px_var(--line)] hover:shadow-[3px_3px_0px_var(--accent)]"
             >
               <GithubIcon className="w-4 h-4" />
             </a>
@@ -73,7 +73,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
-              className="flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--surface-2)] text-[var(--ink)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all border border-[var(--line)] shadow-sm"
+              className="flex items-center justify-center w-9 h-9 rounded-none bg-[var(--surface-2)] text-[var(--ink)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all border-2 border-[var(--line)] shadow-[2px_2px_0px_var(--line)] hover:shadow-[3px_3px_0px_var(--accent)]"
             >
               <LinkedinIcon className="w-4 h-4" />
             </a>
@@ -84,7 +84,7 @@ export function Footer() {
             <button
               type="button"
               onClick={handleReroll}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--surface-2)] text-[var(--ink-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all border border-[var(--line)] shadow-sm text-xs font-pixel cursor-pointer select-none"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-[var(--surface-2)] text-[var(--ink-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all border-2 border-[var(--line)] shadow-[2px_2px_0px_var(--line)] hover:shadow-[3px_3px_0px_var(--accent)] text-xs font-pixel cursor-pointer select-none"
               title="Acak posisi karakter pixel art"
               aria-label="Acak posisi karakter pixel art"
             >
@@ -95,7 +95,7 @@ export function Footer() {
             <button
               type="button"
               onClick={handleToggleSound}
-              className={`flex items-center justify-center w-8 h-8 rounded-xl transition-all border border-[var(--line)] shadow-sm cursor-pointer select-none ${
+              className={`flex items-center justify-center w-8 h-8 rounded-none transition-all border-2 border-[var(--line)] shadow-[2px_2px_0px_var(--line)] hover:shadow-[3px_3px_0px_var(--accent)] cursor-pointer select-none ${
                 muted
                   ? "bg-[var(--surface-2)] text-[var(--ink-muted)] hover:text-[var(--ink)]"
                   : "bg-[var(--surface-2)] text-[var(--accent)] hover:border-[var(--accent)]"

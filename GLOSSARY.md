@@ -17,3 +17,11 @@ The three foundational disciplines forming Dhimas's technical expertise:
 - **Live Simulator**: A reactive canvas or CSS/SVG micro-widget embedded directly within a pillar card, illustrating real-time domain behavior (e.g. radar ping for SecOps, neural node flow for AI, server status terminal for Systems).
 - **Tech Arsenal (Matrix)**: The discrete list of battle-tested tools, protocols, and runtimes associated with each engineering pillar, revealed through user interaction.
 - **Retro-Pixel Aesthetics**: Deliberate visual design system leveraging 8-bit pixel fonts (`Silkscreen`), stepped pixel border corners, scanline textures, and synthesized Web Audio API frequency beeps.
+
+---
+
+## 3. Retro-Pixel UI System (`Retro UI`)
+- **Pixel Segmented Chassis**: Segmented filter bars, tab switches, and button controls featuring stepped pixel-cut corners, monospace brackets `[ OPTION ]`, and solid high-contrast active fills.
+- **Retro-HUD Typography**: Dual-layer typographic hierarchy combining `Silkscreen` (`font-pixel`) for headings, navigation links, badges, filter labels, and buttons, with `JetBrains Mono` (`font-mono`) for crisp, high-density body copy.
+- **Stepped Pixel Card Framing**: Pixelated stepped polygon clip-paths or discrete pixel-cut borders replacing generic curved radiuses (`rounded-2xl`) across Projects, Experience, and Contact surfaces.
+- **8-Bit Tactile Micro-Interactions**: Web Audio API synthesized soft clicks triggered on tab switches, paired with custom 8-bit pixel pointer cursors.

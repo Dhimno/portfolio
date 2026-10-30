@@ -82,7 +82,7 @@ function MarqueeTrack({
           return (
             <div
               key={idx}
-              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[var(--surface)] text-[var(--ink)] border border-[var(--line)] text-xs sm:text-sm font-semibold shadow-xs hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all duration-200 cursor-default group"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-none bg-[var(--surface)] text-[var(--ink)] border-2 border-[var(--line)] text-[11px] sm:text-xs font-pixel tracking-wide shadow-[2px_2px_0px_var(--line)] hover:shadow-[3px_3px_0px_var(--accent)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all duration-200 cursor-default group"
             >
               <span className="w-5 h-5 flex items-center justify-center text-current group-hover:scale-110 transition-transform">
                 <IconComp className="w-4 h-4" />

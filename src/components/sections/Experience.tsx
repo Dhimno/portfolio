@@ -7,6 +7,7 @@ import { useI18n } from "../../lib/i18n";
 import { experiences } from "../../data/experience";
 import { BlurReveal } from "../ui/BlurReveal";
 import { Orb } from "../ui/Orb";
+import { playPokeSound } from "../../lib/sound";
 
 export function ExperienceSection() {
   const { t, locale } = useI18n();
@@ -37,28 +38,43 @@ export function ExperienceSection() {
               </p>
             </div>
 
-            {/* Filter Tabs */}
-            <div className="flex items-center p-1 rounded-xl bg-[var(--surface-2)] border border-[var(--line)] self-start sm:self-auto">
+            {/* Filter Tabs - Retro Pixel Segmented Chassis */}
+            <div className="flex items-center gap-1.5 p-1.5 bg-[var(--surface-2)] border-2 border-[var(--line)] shadow-[3px_3px_0px_var(--line)] self-start sm:self-auto rounded-none">
               {(
                 [
                   { id: "all", label: t.experience.tabAll },
                   { id: "work", label: t.experience.tabWork },
                   { id: "education", label: t.experience.tabEducation },
                 ] as const
-              ).map((tab) => (
-                <button
-                  key={tab.id}
-                  type="button"
-                  onClick={() => setFilter(tab.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                    filter === tab.id
-                      ? "bg-[var(--surface)] text-[var(--accent)] font-semibold shadow-sm"
-                      : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+              ).map((tab) => {
+                const isActive = filter === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => {
+                      if (!isActive) {
+                        try {
+                          playPokeSound();
+                        } catch {
+                          // Ignore
+                        }
+                      }
+                      setFilter(tab.id);
+                    }}
+                    className={`px-3 py-1.5 text-xs font-pixel tracking-wider select-none cursor-pointer transition-all border ${
+                      isActive
+                        ? "border-[var(--line)] bg-[var(--surface)] text-[var(--accent)] font-bold shadow-[2px_2px_0px_var(--accent)]"
+                        : "border-transparent text-[var(--ink-muted)] hover:text-[var(--ink)] hover:border-[var(--line)]/50"
+                    }`}
+                  >
+                    <span className="flex items-center gap-1">
+                      {isActive && <span className="text-[var(--accent)] text-[10px]">▶</span>}
+                      <span>{tab.label}</span>
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </BlurReveal>
@@ -66,7 +82,7 @@ export function ExperienceSection() {
         {/* Timeline Items Container */}
         <div className="relative">
           {/* Continuous vertical timeline bar centered at x = 16px */}
-          <div className="absolute left-4 top-4 bottom-4 w-0.5 -translate-x-1/2 bg-[var(--line)]" />
+          <div className="absolute left-4 top-4 bottom-4 w-1 -translate-x-1/2 bg-[var(--line)] border-r border-[var(--line)]" />
 
           <div className="space-y-12">
             <AnimatePresence mode="popLayout">
@@ -81,17 +97,17 @@ export function ExperienceSection() {
                 transition={{ duration: 0.4 }}
                 className="relative pl-12 sm:pl-14 group"
               >
-                {/* Timeline node icon centered perfectly at x = 16px */}
-                  <div className="absolute left-4 top-6 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[var(--surface)] border-2 border-[var(--accent)] flex items-center justify-center text-[var(--accent)] shadow-sm z-10">
-                    {exp.type === "work" ? (
-                      <Briefcase className="w-3.5 h-3.5" />
-                    ) : (
-                      <GraduationCap className="w-4 h-4" />
-                    )}
-                  </div>
+                {/* Timeline node icon: Retro pixel square */}
+                <div className="absolute left-4 top-6 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-none bg-[var(--surface)] border-2 border-[var(--accent)] shadow-[2px_2px_0px_var(--accent)] flex items-center justify-center text-[var(--accent)] z-10">
+                  {exp.type === "work" ? (
+                    <Briefcase className="w-3.5 h-3.5" />
+                  ) : (
+                    <GraduationCap className="w-4 h-4" />
+                  )}
+                </div>
 
-                  {/* Card Container */}
-                  <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--line)] shadow-sm hover:border-[var(--accent)]/40 transition-colors">
+                {/* Card Container: Retro pixel box */}
+                <div className="p-6 rounded-none bg-[var(--surface)] border-2 border-[var(--line)] shadow-[4px_4px_0px_var(--line)] hover:border-[var(--accent)] hover:shadow-[5px_5px_0px_var(--accent)] transition-all">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
                     <h3 className="font-display font-bold text-lg sm:text-xl text-[var(--ink)]">
                       {exp.role[locale]}

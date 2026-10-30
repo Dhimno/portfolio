@@ -88,13 +88,13 @@ export function ContactsSection() {
                     <button
                       type="button"
                       onClick={handleCopyEmail}
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[var(--surface-2)] hover:bg-[var(--line)] text-xs font-mono text-[var(--ink)] transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-none border border-[var(--line)] hover:border-[var(--accent)] bg-[var(--surface-2)] hover:bg-[var(--line)] text-[10px] font-pixel text-[var(--ink)] shadow-[2px_2px_0px_var(--line)] transition-colors cursor-pointer"
                       aria-label="Copy Email Address"
                     >
                       {copied ? (
                         <>
                           <Check className="w-3.5 h-3.5 text-emerald-500" />
-                          <span className="text-emerald-500 font-semibold">{t.contacts.copied}</span>
+                          <span className="text-emerald-500 font-bold">{t.contacts.copied}</span>
                         </>
                       ) : (
                         <>
@@ -122,10 +122,10 @@ export function ContactsSection() {
           {/* Right Column: Clean Interactive Message Form (7 cols) */}
           <div className="md:col-span-7">
             <BlurReveal delay={0.35}>
-              <div className="p-6 sm:p-8 rounded-2xl bg-[var(--surface)] border border-[var(--line)] shadow-sm">
+              <div className="p-6 sm:p-8 rounded-none bg-[var(--surface)] border-2 border-[var(--line)] shadow-[5px_5px_0px_var(--line)]">
                 {isSubmitted ? (
                   <div className="text-center py-10 space-y-3">
-                    <div className="w-12 h-12 rounded-full bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center mx-auto">
+                    <div className="w-12 h-12 rounded-none border-2 border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] shadow-[2px_2px_0px_var(--accent)] flex items-center justify-center mx-auto">
                       <Check className="w-6 h-6 stroke-[2.5]" />
                     </div>
                     <h3 className="font-display font-bold text-lg text-[var(--ink)]">
@@ -137,7 +137,7 @@ export function ContactsSection() {
                     <div>
                       <label
                         htmlFor="contact-name"
-                        className="block text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)] mb-1.5"
+                        className="block text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)] mb-1.5 font-mono"
                       >
                         {t.contacts.namePlaceholder}
                       </label>
@@ -151,14 +151,14 @@ export function ContactsSection() {
                         onChange={(e) =>
                           setFormState({ ...formState, name: e.target.value })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-[var(--surface-2)] border border-[var(--line)] text-sm text-[var(--ink)] placeholder-[var(--ink-muted)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                        className="w-full px-4 py-3 rounded-none bg-[var(--surface-2)] border-2 border-[var(--line)] text-sm font-mono text-[var(--ink)] placeholder-[var(--ink-muted)] shadow-[2px_2px_0px_var(--line)] focus:outline-none focus:border-[var(--accent)] transition-colors"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="contact-email"
-                        className="block text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)] mb-1.5"
+                        className="block text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)] mb-1.5 font-mono"
                       >
                         {t.contacts.emailPlaceholder}
                       </label>
@@ -172,14 +172,14 @@ export function ContactsSection() {
                         onChange={(e) =>
                           setFormState({ ...formState, email: e.target.value })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-[var(--surface-2)] border border-[var(--line)] text-sm text-[var(--ink)] placeholder-[var(--ink-muted)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                        className="w-full px-4 py-3 rounded-none bg-[var(--surface-2)] border-2 border-[var(--line)] text-sm font-mono text-[var(--ink)] placeholder-[var(--ink-muted)] shadow-[2px_2px_0px_var(--line)] focus:outline-none focus:border-[var(--accent)] transition-colors"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="contact-message"
-                        className="block text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)] mb-1.5"
+                        className="block text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)] mb-1.5 font-mono"
                       >
                         {t.contacts.messagePlaceholder}
                       </label>
@@ -192,14 +192,14 @@ export function ContactsSection() {
                         onChange={(e) =>
                           setFormState({ ...formState, message: e.target.value })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-[var(--surface-2)] border border-[var(--line)] text-sm text-[var(--ink)] placeholder-[var(--ink-muted)] focus:outline-none focus:border-[var(--accent)] transition-colors resize-none"
+                        className="w-full px-4 py-3 rounded-none bg-[var(--surface-2)] border-2 border-[var(--line)] text-sm font-mono text-[var(--ink)] placeholder-[var(--ink-muted)] shadow-[2px_2px_0px_var(--line)] focus:outline-none focus:border-[var(--accent)] transition-colors resize-none"
                       />
                     </div>
 
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3.5 px-6 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-strong)] text-white text-sm font-semibold transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                      className="w-full py-3.5 px-6 rounded-none border-2 border-[var(--ink)] bg-[var(--accent)] hover:bg-[var(--accent-strong)] text-white text-xs font-pixel tracking-wider shadow-[3px_3px_0px_var(--ink)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_var(--ink)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
                     >
                       <Send className="w-4 h-4" />
                       <span>

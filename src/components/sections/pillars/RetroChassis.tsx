@@ -85,7 +85,7 @@ export function RetroChassis({
             role="tab"
             aria-selected={activeTab === "telemetry"}
             onClick={() => handleTabClick("telemetry")}
-            className={`flex-1 py-1.5 px-2 text-center font-mono text-[10px] sm:text-xs tracking-wider transition-colors cursor-pointer select-none border ${
+            className={`flex-1 py-1.5 px-1 sm:px-2 text-center font-mono text-[10px] sm:text-xs tracking-tight sm:tracking-wider whitespace-nowrap transition-colors cursor-pointer select-none border ${
               activeTab === "telemetry"
                 ? "bg-[var(--surface)] text-[var(--accent)] font-semibold border-[var(--line)] shadow-xs"
                 : "text-[var(--ink-muted)] hover:text-[var(--ink)] border-transparent"
@@ -98,7 +98,7 @@ export function RetroChassis({
             role="tab"
             aria-selected={activeTab === "arsenal"}
             onClick={() => handleTabClick("arsenal")}
-            className={`flex-1 py-1.5 px-2 text-center font-mono text-[10px] sm:text-xs tracking-wider transition-colors cursor-pointer select-none border ${
+            className={`flex-1 py-1.5 px-1 sm:px-2 text-center font-mono text-[10px] sm:text-xs tracking-tight sm:tracking-wider whitespace-nowrap transition-colors cursor-pointer select-none border ${
               activeTab === "arsenal"
                 ? "bg-[var(--surface)] text-[var(--accent)] font-semibold border-[var(--line)] shadow-xs"
                 : "text-[var(--ink-muted)] hover:text-[var(--ink)] border-transparent"

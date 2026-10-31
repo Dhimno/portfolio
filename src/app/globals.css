@@ -44,6 +44,10 @@
 }
 
 @layer base {
+  nextjs-portal {
+    display: none !important;
+  }
+
   * {
     border-color: var(--line);
     box-sizing: border-box;

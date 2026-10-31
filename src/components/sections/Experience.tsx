@@ -12,6 +12,28 @@ import { playPokeSound } from "../../lib/sound";
 export function ExperienceSection() {
   const { t, locale } = useI18n();
   const [filter, setFilter] = useState<"all" | "work" | "education">("all");
+  const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({});
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const toggleExpand = (id: string) => {
+    if (!isMobile) return;
+    try {
+      playPokeSound();
+    } catch {
+      // Ignore
+    }
+    setExpandedIds((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   const filteredExperiences = experiences.filter((item) => {
     if (filter === "all") return true;
@@ -69,7 +91,7 @@ export function ExperienceSection() {
                     }`}
                   >
                     <span className="flex items-center gap-1 whitespace-nowrap">
-                      {isActive && <span className="text-[var(--accent)] text-[10px]">▶</span>}
+                      {isActive && <span className="hidden md:inline text-[var(--accent)] text-[10px]">▶</span>}
                       <span>{tab.label}</span>
                     </span>
                   </button>
@@ -86,69 +108,103 @@ export function ExperienceSection() {
 
           <div className="space-y-12">
             <AnimatePresence mode="popLayout">
-            {filteredExperiences.map((exp) => (
-              <motion.div
-                key={exp.id}
-                layout
-                initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: false, amount: 0.2 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.4 }}
-                className="relative pl-12 sm:pl-14 group"
-              >
-                {/* Timeline node icon: Retro pixel square */}
-                <div className="absolute left-4 top-6 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-none bg-[var(--surface)] border-2 border-[var(--accent)] shadow-[2px_2px_0px_var(--accent)] flex items-center justify-center text-[var(--accent)] z-10">
-                  {exp.type === "work" ? (
-                    <Briefcase className="w-3.5 h-3.5" />
-                  ) : (
-                    <GraduationCap className="w-4 h-4" />
-                  )}
-                </div>
+            {filteredExperiences.map((exp) => {
+              const isExpanded = !isMobile || !!expandedIds[exp.id];
 
-                {/* Card Container: Retro pixel box */}
-                <div className="p-6 rounded-none bg-[var(--surface)] border-2 border-[var(--line)] shadow-[4px_4px_0px_var(--line)] hover:border-[var(--accent)] hover:shadow-[5px_5px_0px_var(--accent)] transition-all">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                    <h3 className="font-display font-bold text-lg sm:text-xl text-[var(--ink)]">
-                      {exp.role[locale]}
-                    </h3>
-                    <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--accent)] font-medium">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>{exp.period[locale]}</span>
+              return (
+                <motion.div
+                  key={exp.id}
+                  layout
+                  initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative pl-12 sm:pl-14 group"
+                >
+                  {/* Timeline node icon: Retro pixel square */}
+                  <div className="absolute left-4 top-6 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-none bg-[var(--surface)] border-2 border-[var(--accent)] shadow-[2px_2px_0px_var(--accent)] flex items-center justify-center text-[var(--accent)] z-10">
+                    {exp.type === "work" ? (
+                      <Briefcase className="w-3.5 h-3.5" />
+                    ) : (
+                      <GraduationCap className="w-4 h-4" />
+                    )}
+                  </div>
+
+                  {/* Card Container: Retro pixel box */}
+                  <div
+                    onClick={() => toggleExpand(exp.id)}
+                    className={`p-5 sm:p-6 rounded-none bg-[var(--surface)] border-2 border-[var(--line)] shadow-[4px_4px_0px_var(--line)] hover:border-[var(--accent)] hover:shadow-[5px_5px_0px_var(--accent)] transition-all ${
+                      isMobile ? "cursor-pointer active:scale-[0.99]" : ""
+                    }`}
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                      <div className="flex items-start justify-between gap-2">
+                        <h3 className="font-display font-bold text-lg sm:text-xl text-[var(--ink)]">
+                          {exp.role[locale]}
+                        </h3>
+                        {isMobile && (
+                          <span className="font-pixel text-[9px] text-[var(--accent)] px-1.5 py-0.5 border border-[var(--accent)]/40 bg-[var(--surface-2)] shrink-0 mt-0.5 select-none">
+                            {expandedIds[exp.id] ? "[-] TUTUP" : "[+] DETAIL"}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--accent)] font-medium">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>{exp.period[locale]}</span>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[var(--ink-muted)] mb-4">
-                    <span className="font-semibold text-[var(--ink)]">
-                      {exp.organization}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      {exp.location}
-                    </span>
-                  </div>
+                    <div
+                      className={`flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[var(--ink-muted)] ${
+                        isExpanded ? "mb-4" : "mb-0"
+                      }`}
+                    >
+                      <span className="font-semibold text-[var(--ink)]">
+                        {exp.organization}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <MapPin className="w-3 h-3" />
+                        {exp.location}
+                      </span>
+                    </div>
 
-                  {/* Highlights */}
-                  <ul className="space-y-2 mb-5">
-                    {exp.highlights[locale].map((point, idx) => (
-                      <li
-                        key={idx}
-                        className="text-sm text-[var(--ink-muted)] flex items-start gap-2.5 leading-relaxed"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-none bg-[var(--accent)] mt-2 flex-shrink-0" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    {/* Accordion Collapsible Details: Multi-Expand per card on Mobile, Always Expanded on Desktop */}
+                    <AnimatePresence initial={false}>
+                      {isExpanded && (
+                        <motion.div
+                          key="accordion-details"
+                          initial={isMobile ? { height: 0, opacity: 0 } : false}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={isMobile ? { height: 0, opacity: 0 } : undefined}
+                          transition={{ duration: 0.28, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          {/* Highlights */}
+                          <ul className="space-y-2 mb-5 pt-1">
+                            {exp.highlights[locale].map((point, idx) => (
+                              <li
+                                key={idx}
+                                className="text-sm text-[var(--ink-muted)] flex items-start gap-2.5 leading-relaxed"
+                              >
+                                <span className="w-1.5 h-1.5 rounded-none bg-[var(--accent)] mt-2 flex-shrink-0" />
+                                <span>{point}</span>
+                              </li>
+                            ))}
+                          </ul>
 
-                  {/* Focus & Tools - Clean inline text */}
-                  <div className="flex flex-wrap items-center gap-1.5 pt-3 border-t border-[var(--line)]/50 text-xs font-mono text-[var(--ink-muted)]">
-                    <span className="font-semibold text-[var(--ink)]">Fokus:</span>
-                    <span>{exp.tags.join(" • ")}</span>
+                          {/* Focus & Tools - Clean inline text */}
+                          <div className="flex flex-wrap items-center gap-1.5 pt-3 border-t border-[var(--line)]/50 text-xs font-mono text-[var(--ink-muted)]">
+                            <span className="font-semibold text-[var(--ink)]">Fokus:</span>
+                            <span>{exp.tags.join(" • ")}</span>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </div>
         </div>

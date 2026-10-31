@@ -84,7 +84,56 @@ export function DialogueBox({
   position = "top",
 }: DialogueBoxProps) {
   const [charCount, setCharCount] = useState(0);
+  const [horizontalShift, setHorizontalShift] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Auto horizontal clamping for mobile & responsive viewports to prevent screen edge overflow
+  useEffect(() => {
+    const updateClamping = () => {
+      if (typeof window === "undefined" || !containerRef.current) return;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const safeMargin = 12;
+      const viewportWidth = window.innerWidth;
+
+      // Base unshifted bounding rect coordinates
+      const baseLeft = rect.left - horizontalShift;
+      const baseRight = rect.right - horizontalShift;
+
+      let shift = 0;
+      if (baseLeft < safeMargin) {
+        shift = safeMargin - baseLeft;
+      } else if (baseRight > viewportWidth - safeMargin) {
+        shift = (viewportWidth - safeMargin) - baseRight;
+      }
+
+      if (Math.abs(shift - horizontalShift) > 0.5) {
+        setHorizontalShift(shift);
+      }
+    };
+
+    updateClamping();
+    const raf1 = requestAnimationFrame(updateClamping);
+    const raf2 = requestAnimationFrame(() => requestAnimationFrame(updateClamping));
+
+    window.addEventListener("resize", updateClamping);
+
+    // Watch for size changes as typewriter text expands
+    let resizeObserver: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined" && containerRef.current) {
+      resizeObserver = new ResizeObserver(() => {
+        updateClamping();
+      });
+      resizeObserver.observe(containerRef.current);
+    }
+
+    return () => {
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+      window.removeEventListener("resize", updateClamping);
+      resizeObserver?.disconnect();
+    };
+  }, [text, charCount, horizontalShift]);
 
   // Typewriter effect using slice counter with 8-bit speech blip
   useEffect(() => {
@@ -148,7 +197,10 @@ export function DialogueBox({
           e.stopPropagation();
           onDismiss?.();
         }}
-        className={`absolute z-50 pointer-events-auto cursor-pointer max-w-[280px] sm:max-w-[340px] w-max select-none ${
+        style={{
+          marginLeft: `${horizontalShift}px`,
+        }}
+        className={`absolute z-50 pointer-events-auto cursor-pointer max-w-[calc(100vw-24px)] sm:max-w-[340px] w-max select-none ${
           position === "top"
             ? "bottom-full mb-3 left-1/2 -translate-x-1/2"
             : "top-full mt-3 left-1/2 -translate-x-1/2"
@@ -192,13 +244,17 @@ export function DialogueBox({
             </div>
           )}
 
-          {/* Pointer Triangle Arrow (Pixel style) */}
+          {/* Pointer Triangle Arrow (Pixel style) with dynamic center clamping */}
           <div
-            className={`absolute left-1/2 -translate-x-1/2 w-0 h-0 border-x-[6px] border-x-transparent ${
+            className={`absolute w-0 h-0 border-x-[6px] border-x-transparent ${
               position === "top"
                 ? "top-full border-t-[8px] border-t-white"
                 : "bottom-full border-b-[8px] border-b-white"
             }`}
+            style={{
+              left: `clamp(14px, calc(50% - ${horizontalShift}px), calc(100% - 14px))`,
+              transform: "translateX(-50%)",
+            }}
           />
         </div>
       </motion.div>

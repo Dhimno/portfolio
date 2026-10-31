@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { Suspense, useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ExternalLink, X } from "lucide-react";
@@ -13,9 +13,12 @@ import { DynamicCompanion } from "../companions/DynamicCompanion";
 import { useSpawnContext } from "../companions/SpawnContext";
 import { SpawnSlot } from "../companions/types";
 import { playPokeSound } from "../../lib/sound";
+import { GameboyCartridgeArena } from "./GameboyCartridgeArena";
 
-export function ProjectsSection() {
+function ProjectsContent() {
   const { t, locale } = useI18n();
+  const [isArchiveOpen, setIsArchiveOpen] = useState(false);
+
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const { assignments } = useSpawnContext();
@@ -93,57 +96,90 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative w-full pt-16 pb-20 sm:pt-20 sm:pb-24 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)]/50 overflow-hidden scroll-mt-16"
+      className="relative w-full pt-16 pb-20 sm:pt-20 sm:pb-24 px-4 sm:px-6 lg:px-8 border-t border-[var(--line)]/50 [overflow-x:clip] [overflow-y:visible] scroll-mt-16"
     >
       <Orb top="30%" left="-5%" size={500} delay={2} />
 
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
+        {/* Header with generous, comfortable breathing room */}
         <BlurReveal>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
             <div>
               <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-[var(--ink)] tracking-[-0.04em]">
                 {t.projects.title}
               </h2>
-              <p className="text-[var(--ink-muted)] mt-2 text-base max-w-lg">
+              <p className="text-[var(--ink-muted)] mt-3 sm:mt-4 text-base sm:text-lg max-w-xl leading-relaxed">
                 {t.projects.subtitle}
               </p>
             </div>
-
-            {/* Filter Chips - Retro Pixel Segmented Chassis */}
-            <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-[var(--surface-2)] border-2 border-[var(--line)] shadow-[3px_3px_0px_var(--line)] self-start sm:self-auto rounded-none">
-              {categories.map((cat) => {
-                const isActive = activeCategory === cat.id;
-                return (
-                  <button
-                    key={cat.id}
-                    type="button"
-                    onClick={() => {
-                      if (!isActive) {
-                        try {
-                          playPokeSound();
-                        } catch {
-                          // Ignore
-                        }
-                      }
-                      setActiveCategory(cat.id);
-                    }}
-                    className={`relative px-3 py-1.5 text-xs font-pixel tracking-wider select-none cursor-pointer transition-all border ${
-                      isActive
-                        ? "border-[var(--line)] bg-[var(--surface)] text-[var(--accent)] font-bold shadow-[2px_2px_0px_var(--accent)]"
-                        : "border-transparent text-[var(--ink-muted)] hover:text-[var(--ink)] hover:border-[var(--line)]/50"
-                    }`}
-                  >
-                    <span className="relative z-10 flex items-center gap-1">
-                      {isActive && <span className="text-[var(--accent)] text-[10px]">▶</span>}
-                      <span>{cat.label}</span>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-            </div>
+          </div>
         </BlurReveal>
+
+        {/* Gameboy DMG Classic Handheld Showcase with Physics Cartridge Arena */}
+        <div className="mb-10 sm:mb-14 overflow-visible">
+          <GameboyCartridgeArena />
+        </div>
+
+        {/* Collapsible Archive Header Toggle */}
+        <BlurReveal delay={0.15}>
+          <div className="flex flex-col items-center justify-center pt-8 sm:pt-12 border-t border-[var(--line)]/50">
+            <button
+              type="button"
+              onClick={() => {
+                try {
+                  playPokeSound();
+                } catch {}
+                setIsArchiveOpen(!isArchiveOpen);
+              }}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--surface-2)] border-2 border-[var(--line)] shadow-[4px_4px_0px_var(--line)] hover:translate-x-[1px] hover:translate-y-[1px] font-pixel text-xs sm:text-sm text-[var(--ink)] cursor-pointer transition-all active:scale-[0.98]"
+            >
+              <span className="text-[var(--accent)] font-bold">
+                {isArchiveOpen ? "[-] TUTUP ARSIP PROYEK" : "[+] LIHAT SEMUA PROYEK (6)"}
+              </span>
+            </button>
+          </div>
+        </BlurReveal>
+
+        {/* Bento Grid Archive (Revealed when open) */}
+        {isArchiveOpen && (
+          <div className="mt-8 transition-all">
+            {/* Filter Chips - Retro Pixel Segmented Chassis */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pt-4">
+              <span className="font-pixel text-xs text-[var(--ink-muted)] tracking-wider">
+                {locale === "id" ? "[ FILTER KATEGORI ]" : "[ CATEGORY FILTER ]"}
+              </span>
+              <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-[var(--surface-2)] border-2 border-[var(--line)] shadow-[3px_3px_0px_var(--line)] self-start sm:self-auto rounded-none">
+                {categories.map((cat) => {
+                  const isActive = activeCategory === cat.id;
+                  return (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      onClick={() => {
+                        if (!isActive) {
+                          try {
+                            playPokeSound();
+                          } catch {
+                            // Ignore
+                          }
+                        }
+                        setActiveCategory(cat.id);
+                      }}
+                      className={`relative px-3 py-1.5 text-xs font-pixel tracking-wider select-none cursor-pointer transition-all border ${
+                        isActive
+                          ? "border-[var(--line)] bg-[var(--surface)] text-[var(--accent)] font-bold shadow-[2px_2px_0px_var(--accent)]"
+                          : "border-transparent text-[var(--ink-muted)] hover:text-[var(--ink)] hover:border-[var(--line)]/50"
+                      }`}
+                    >
+                      <span className="relative z-10 flex items-center gap-1">
+                        {isActive && <span className="hidden md:inline text-[var(--accent)] text-[10px]">▶</span>}
+                        <span>{cat.label}</span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
 
         {/* Bento Grid with smooth fade-out then fade-in transition */}
         <AnimatePresence mode="wait">
@@ -233,6 +269,8 @@ export function ProjectsSection() {
             })}
           </motion.div>
         </AnimatePresence>
+          </div>
+        )}
       </div>
 
       {/* Shared Layout Detail Modal */}
@@ -359,5 +397,13 @@ export function ProjectsSection() {
         )}
       </AnimatePresence>
     </section>
+  );
+}
+
+export function ProjectsSection() {
+  return (
+    <Suspense fallback={<div className="min-h-[400px]" />}>
+      <ProjectsContent />
+    </Suspense>
   );
 }

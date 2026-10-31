@@ -41,7 +41,7 @@ export const projects: Project[] = [
     },
     category: ["web"],
     stack: ["Laravel 11", "PHP 8.2", "MySQL", "Tailwind CSS", "Pest"],
-    cover: "/projects/wiyata.png",
+    cover: "/projects/rom-01.webp",
     links: {
       repo: "https://github.com/PPK-06/reservasi-fasilitas-kampus",
     },
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     },
     category: ["desktop"],
     stack: ["Rust", "Tauri v2", "HTML5", "CSS3", "JavaScript"],
-    cover: "/projects/dynamic-pill.png",
+    cover: "/projects/rom-02.webp",
     links: {
       repo: "https://github.com/Dhimno/Dynamic-Pill",
     },
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     },
     category: ["system", "automation"],
     stack: ["Linux (Armbian)", "Docker", "CasaOS", "n8n", "Tailscale", "Python"],
-    cover: "/projects/homelab.png",
+    cover: "/projects/rom-03.webp",
     links: {},
     featured: false,
     role: {
@@ -120,7 +120,7 @@ export const projects: Project[] = [
     },
     category: ["automation", "web"],
     stack: ["JavaScript", "Cloudflare Workers", "Userscript API", "DOM API"],
-    cover: "/projects/ft-bot.png",
+    cover: "/projects/rom-04.webp",
     links: {
       repo: "https://github.com/Dhimno/FT-Bot-UNDIP",
     },
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     },
     category: ["localization", "desktop"],
     stack: ["Python", "Tkinter", "Asset Patching", "Regex"],
-    cover: "/projects/outerwilds.jpg",
+    cover: "/projects/rom-05.webp",
     links: {
       repo: "https://github.com/Dhimno/OuterWilds-Indonesian-Translation",
     },
@@ -170,7 +170,7 @@ export const projects: Project[] = [
     },
     category: ["web"],
     stack: ["HTML5", "CSS3", "JavaScript"],
-    cover: "/projects/himaose.png",
+    cover: "/projects/rom-06.webp",
     links: {
       repo: "https://github.com/Dhimno/HimaOSE",
     },

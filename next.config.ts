@@ -1,12 +1,22 @@
 import type { NextConfig } from "next";
+import os from "node:os";
+
+const localIps = Object.values(os.networkInterfaces())
+  .flat()
+  .filter((iface): iface is os.NetworkInterfaceInfo => !!iface && iface.family === "IPv4")
+  .map((iface) => iface.address);
 
 const nextConfig: NextConfig = {
   /* config options here */
+  devIndicators: false,
   allowedDevOrigins: [
-    "192.168.2.161",
-    "192.168.2.161:3000",
-    "localhost:3000",
-    "127.0.0.1:3000",
+    ...localIps,
+    "192.168.*.*",
+    "10.*.*.*",
+    "172.*.*.*",
+    "*.local",
+    "localhost",
+    "127.0.0.1",
   ],
   cacheComponents: true,
   partialPrefetching: true,

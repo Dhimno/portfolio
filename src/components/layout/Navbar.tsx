@@ -9,7 +9,7 @@ import { LangToggle } from "./LangToggle";
 import { Logo } from "../ui/Logo";
 
 export function Navbar() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -101,7 +101,9 @@ export function Navbar() {
 
         {/* Right Controls */}
         <div className="flex items-center space-x-2 sm:space-x-3">
-          <LangToggle />
+          <div className="hidden md:inline-flex">
+            <LangToggle />
+          </div>
           <ThemeToggle />
 
           {/* Mobile Menu Trigger */}
@@ -140,6 +142,14 @@ export function Navbar() {
                 {item.label}
               </a>
             ))}
+
+            {/* Language Switcher inside Mobile Drawer */}
+            <div className="pt-3.5 mt-2 border-t border-[var(--line)]/60 flex items-center justify-between px-2">
+              <span className="text-[11px] font-pixel text-[var(--ink-muted)] uppercase tracking-wider">
+                {locale === "id" ? "Bahasa" : "Language"}
+              </span>
+              <LangToggle />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

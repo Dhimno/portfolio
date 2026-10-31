@@ -14,7 +14,7 @@ function seededRandom(seed: number) {
 
 const COLS = 8;
 const ROWS = 10;
-const TOTAL_TILES = COLS * ROWS; // 80 tiles
+const TOTAL_TILES = COLS * ROWS;
 
 export function Loader() {
   const [loading, setLoading] = useState(true);
@@ -22,14 +22,12 @@ export function Loader() {
   const numRef = useRef<HTMLSpanElement>(null);
   const hasFinishedRef = useRef(false);
 
-  // Consistent, deterministic scatter order for all 80 tiles (0.05 to 0.85s delay)
   const order = useMemo(() => {
     const rng = seededRandom(80 * 79 + 13);
     return Array.from({ length: TOTAL_TILES }, () => 0.05 + rng() * 0.8);
   }, []);
 
   useEffect(() => {
-    // 1. Lock scroll on mount
     document.body.style.overflow = "hidden";
 
     const completeLoader = () => {
@@ -44,22 +42,18 @@ export function Loader() {
       }, 220);
     };
 
-    // 2. Hard absolute safety fallback (1.8s) - guarantees dismissal on any device
     const safetyTimer = setTimeout(() => {
       completeLoader();
     }, 1800);
 
-    // 3. Ultra-lightweight direct DOM updater (ZERO React re-renders during count-up)
     const startTime = performance.now();
-    const duration = 1250; // 1.25s count-up
+    const duration = 1250;
     let rafId: number;
     let lastPercent = -1;
 
     const tick = (now: number) => {
       const elapsed = Math.max(0, now - startTime);
       const progress = Math.min(1, elapsed / duration);
-
-      // Smooth ease-out cubic deceleration
       const eased = 1 - Math.pow(1 - progress, 2.5);
       const currentPercent = Math.min(100, Math.round(eased * 100));
 
